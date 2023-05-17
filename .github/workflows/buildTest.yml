@@ -19,5 +19,5 @@ jobs:
       uses: actions/checkout@v3
     - name: Build test
       run: |
-        xcodebuild -project ./instagram-iOS/instagram-iOS.xcodeproj -scheme Instagram-iOS -destination "platform=iOS Simualtor,name=iPhone 14,OS=14.0"
+        xcodebuild -project ./instagram-iOS/instagram-iOS.xcodeproj -scheme Instagram-iOS -destination "platform=iOS Simualtor,name=iPhone 14,OS=latest"
         xcpretty --color --simple
