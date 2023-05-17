@@ -14,6 +14,7 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationBar()
         setDelegate()
         setLayout()
         setStyle()
