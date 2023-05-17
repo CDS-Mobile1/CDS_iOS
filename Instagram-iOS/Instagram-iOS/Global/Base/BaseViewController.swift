@@ -46,12 +46,4 @@ class BaseViewController: UIViewController {
         // override to use
     }
     
-    // MARK: - Action Helper
-    
-    
-    
-    // MARK: - Custom Method
-    
-    
-    
 }
