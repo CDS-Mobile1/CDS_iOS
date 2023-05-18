@@ -11,6 +11,7 @@
 		3E6CF47C2A14F63700DC3B2B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CF47B2A14F63700DC3B2B /* BaseTableViewCell.swift */; };
 		3E6CF47E2A14F84500DC3B2B /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CF47D2A14F84500DC3B2B /* BaseCollectionViewCell.swift */; };
 		3E9683D02A1617A800D6DD30 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3E9683CF2A1617A800D6DD30 /* Alamofire */; };
+		3E9683D32A1617C800D6DD30 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3E9683D22A1617C800D6DD30 /* SnapKit */; };
 		7E8DF56F2A12306B0023948F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF56E2A12306B0023948F /* AppDelegate.swift */; };
 		7E8DF5712A12306B0023948F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF5702A12306B0023948F /* SceneDelegate.swift */; };
 		7E8DF5732A12306B0023948F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF5722A12306B0023948F /* ViewController.swift */; };
@@ -63,6 +64,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E9683D02A1617A800D6DD30 /* Alamofire in Frameworks */,
+				3E9683D32A1617C800D6DD30 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +286,7 @@
 			name = "Instagram-iOS";
 			packageProductDependencies = (
 				3E9683CF2A1617A800D6DD30 /* Alamofire */,
+				3E9683D22A1617C800D6DD30 /* SnapKit */,
 			);
 			productName = "Instagram-iOS";
 			productReference = 7E8DF56B2A12306B0023948F /* Instagram-iOS.app */;
@@ -315,6 +318,7 @@
 			mainGroup = 7E8DF5622A12306B0023948F;
 			packageReferences = (
 				3E9683CE2A1617A800D6DD30 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				3E9683D12A1617C800D6DD30 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 7E8DF56C2A12306B0023948F /* Products */;
 			projectDirPath = "";
@@ -580,6 +584,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		3E9683D12A1617C800D6DD30 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -587,6 +599,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3E9683CE2A1617A800D6DD30 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		3E9683D22A1617C800D6DD30 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E9683D12A1617C800D6DD30 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
