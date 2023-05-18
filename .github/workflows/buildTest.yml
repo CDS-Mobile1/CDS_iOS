@@ -5,7 +5,7 @@ name: Swift
 
 on:
   push:
-    branches: [ "develop", "feat" ]
+    branches: [ "develop" ]
   pull_request:
     branches: [ "develop", "feat" ]
 
@@ -19,5 +19,5 @@ jobs:
       uses: actions/checkout@v3
     - name: Build test
       run: |
-        xcodebuild -project ./instagram-iOS/instagram-iOS.xcodeproj -scheme Instagram-iOS -destination "platform=iOS Simualtor,name=iPhone 14,OS=latest"
+        xcodebuild build -project ./instagram-iOS/instagram-iOS.xcodeproj -scheme Instagram-iOS -destination "platform=iOS Simualtor,name=iPhone 14,OS=latest"
         xcpretty --color --simple
