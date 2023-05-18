@@ -29,6 +29,12 @@ extension UIColor {
     
     static let yellow1 = UIColor(hex: "#FFE600")
     
+    enum Gradient {
+        static let bottomYellow = UIColor(hex: "#FFD012")
+        static let mediumRed = UIColor(hex: "#EA093C")
+        static let topPurple = UIColor(hex: "#D612BA")
+    }
+    
 }
 
 extension UIColor {
