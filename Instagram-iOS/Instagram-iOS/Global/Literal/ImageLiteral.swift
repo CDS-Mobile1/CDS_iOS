@@ -53,7 +53,7 @@ enum ImageLiteral {
     }
     
     enum Common {
-        static let defaultProfile = UIImage.load(name: "defaultProfile")
+        static let defaultImage = UIImage.load(name: "defaultImage")
     }
     
 }

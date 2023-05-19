@@ -11,7 +11,14 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let view1 = UserProfileView(usedView: .story, storyStatus: .new)
+        view1.configureBorder(to: view1.storyStatus)
+        view.backgroundColor = .white
+        view.addSubview(view1)
+        view1.snp.makeConstraints {
+            $0.size.equalTo(70)
+            $0.center.equalToSuperview()
+        }
     }
 
 
