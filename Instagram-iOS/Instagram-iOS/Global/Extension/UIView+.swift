@@ -19,21 +19,14 @@ extension UIView {
         self.layer.borderWidth = width
     }
     
-    func setGradientBorder(with colors: [UIColor]) {
-        let gradientBorder = CAGradientLayer()
-        gradientBorder.frame = .init(origin: .zero, size: self.bounds.size)
-        gradientBorder.colors = colors
-        
-//        let shape = CAShapeLayer()
-//        shape.lineWidth = 2
-//        shape.path = UIBezierPath(rect: self.bounds).cgPath
-//        shape.strokeColor = UIColor.black.cgColor
-//        shape.fillColor = UIColor.clear.cgColor
-        
-//        gradientBorder.mask = shape
-        self.layer.addSublayer(gradientBorder)
-        
-        layoutIfNeeded()
+    func setGradient(color1: UIColor,color2: UIColor){
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.colors = [color1.cgColor,color2.cgColor]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.frame = bounds
+        layer.addSublayer(gradient)
     }
     
 }

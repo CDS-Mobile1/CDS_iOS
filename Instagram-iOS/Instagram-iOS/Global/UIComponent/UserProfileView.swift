@@ -30,15 +30,23 @@ final class UserProfileView: UIView {
     
     var storyStatus: StoryStatus
     
-    var profileImageWidthHeight: CGFloat {
+    var profileWithBorderSize: CGFloat {
+        switch usedView {
+        case .feed: return 60
+        case .story: return 72
+        case .dm: return 37
+        }
+    }
+    
+    var profileImageSize: CGFloat {
         switch usedView {
         case .feed: return 52
-        case .story: return 62.76
+        case .story: return 64
         case .dm: return 32
         }
     }
     
-    var profileBorderSize: CGFloat {
+    var profileBorderWidth: CGFloat {
         switch usedView {
         case .feed: return 1
         case .story: return 2
@@ -48,23 +56,23 @@ final class UserProfileView: UIView {
     
     // MARK: - UI Property
     
+    lazy var profileBorderView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.setCornerRadius(to: profileWithBorderSize / 2)
+        view.setGradient(color1: .red, color2: .blue)
+        return view
+    }()
+    
     lazy var profileImageButtonView: UIButton = {
         let button = UIButton()
         let action = UIAction { [weak self] _ in
             self?.profileImageButtonTapped()
         }
         button.setImage(ImageLiteral.Common.defaultImage, for: .normal)
-        button.setCornerRadius(to: profileImageWidthHeight / 2)
+        button.setCornerRadius(to: profileImageSize / 2)
         button.addAction(action, for: .touchUpInside)
         return button
-    }()
-    
-    lazy var profileBorderView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        view.setCornerRadius(to: (profileImageWidthHeight + 6) / 2)
-        view.setBorder(color: .black1, andWidth: 2)
-        return view
     }()
     
     // MARK: - Init
@@ -76,6 +84,7 @@ final class UserProfileView: UIView {
         super.init(frame: .zero)
         
         setLayout()
+        configureBorder(to: self.storyStatus)
     }
     
     @available(*, unavailable)
@@ -88,14 +97,14 @@ final class UserProfileView: UIView {
     private func setLayout() {
         addSubview(profileBorderView)
         profileBorderView.snp.makeConstraints {
-            $0.size.equalTo(profileBorderSize)
-            $0.edges.equalToSuperview()
+            $0.center.equalToSuperview()
+            $0.width.height.equalTo(profileWithBorderSize)
         }
         
-        addSubview(profileImageButtonView)
+        profileBorderView.addSubview(profileImageButtonView)
         profileImageButtonView.snp.makeConstraints {
-            $0.size.equalTo(profileImageWidthHeight)
-            $0.center.equalTo(profileBorderView)
+            $0.center.equalToSuperview()
+            $0.width.height.equalTo(profileImageSize)
         }
     }
     
@@ -110,29 +119,11 @@ final class UserProfileView: UIView {
     func configureBorder(to storyStatus: StoryStatus) {
         switch storyStatus {
         case .none: profileBorderView.setBorder(color: .clear, andWidth: 0)
-        case .seen: profileBorderView.setBorder(color: .gray5, andWidth: 1)
-        case .new: configureGradientBorder()
-        case .special: profileBorderView.setBorder(color: .green1, andWidth: 2)
+        case .seen: profileBorderView.setBorder(color: .gray5, andWidth: profileBorderWidth)
+            // FIXME: new 상태일 때 상태 변경
+        case .new: profileBorderView.setBorder(color: .green1, andWidth: profileBorderWidth)
+        case .special: profileBorderView.setBorder(color: .green1, andWidth: profileBorderWidth)
         }
-    }
-    
-    private func configureGradientBorder() {
-        // FIXME: gradient border 넣기
-        
-        let gradient = CAGradientLayer()
-        gradient.frame =  CGRect(origin: CGPoint.zero, size: self.profileBorderView.frame.size)
-        gradient.colors = [UIColor.Gradient.topPurple, UIColor.Gradient.mediumRed, UIColor.Gradient.bottomYellow]
-
-        let shape = CAShapeLayer()
-        shape.lineWidth = 2
-        shape.path = UIBezierPath(rect: self.profileBorderView.bounds).cgPath
-        shape.strokeColor = UIColor.black.cgColor
-        shape.fillColor = UIColor.clear.cgColor
-        gradient.mask = shape
-
-        self.profileBorderView.layer.addSublayer(gradient)
-        
-        
     }
     
 }
