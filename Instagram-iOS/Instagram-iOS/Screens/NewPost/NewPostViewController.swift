@@ -76,19 +76,6 @@ final class NewPostViewController: BaseViewController {
         }
     }
     
-    override func setStyle() {
-        view.backgroundColor = .white1
-    }
-    
-    // MARK: - Action Helper
-    
-    
-    
-    // MARK: - Custom Method
-    
-    
-    
-    
 }
 
 
