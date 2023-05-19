@@ -61,6 +61,7 @@ enum ImageLiteral {
     
     enum Common {
         static let defaultProfile = UIImage.load(name: "defaultProfile")
+        static let rightChevron = UIImage.load(name: "rightChevron")
     }
     
 }
