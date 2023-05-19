@@ -15,13 +15,29 @@ final class NewPostViewController: BaseViewController {
     
     let postContentPlaceholder = "문구 입력..."
     
+    var postImageData: [UIImage] = [ImageLiteral.Common.defaultImage,
+                                    ImageLiteral.Common.defaultImage,
+                                    ImageLiteral.Common.defaultImage]
+    
     // MARK: - UI Property
     
-    // TODO: collectionview 추가
-    let dummyView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .green1
-        return view
+    private lazy var postImageCollectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: postImageCollectionViewFlowLayout)
+        collectionView.register(NewPostImageCollectionViewCell.self, forCellWithReuseIdentifier: NewPostImageCollectionViewCell.identifier)
+        collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 0)
+        collectionView.isScrollEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .white1
+        return collectionView
+    }()
+    
+    private let postImageCollectionViewFlowLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 12
+        layout.minimumInteritemSpacing = 12
+        layout.itemSize = .init(width: 70, height: 70)
+        return layout
     }()
     
     private lazy var postContentTextView: UITextView = {
@@ -46,25 +62,29 @@ final class NewPostViewController: BaseViewController {
         super.viewDidLoad()
         
         hideKeyboardWhenTappedAround()
+        setGesture()
     }
     
     // MARK: - Setting
     
     override func setDelegate() {
+        postImageCollectionView.delegate = self
+        postImageCollectionView.dataSource = self
+        
         postContentTextView.delegate = self
     }
     
     override func setLayout() {
-        view.addSubview(dummyView)
-        dummyView.snp.makeConstraints {
+        view.addSubview(postImageCollectionView)
+        postImageCollectionView.snp.makeConstraints {
             $0.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(80)
+            $0.height.equalTo(102)
         }
         
         // TODO: 영역 정해지면 inset 값 수정하기
         view.addSubview(postContentTextView)
         postContentTextView.snp.makeConstraints {
-            $0.top.equalTo(dummyView.snp.bottom)
+            $0.top.equalTo(postImageCollectionView.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(255)
         }
@@ -74,6 +94,60 @@ final class NewPostViewController: BaseViewController {
             $0.top.equalTo(postContentTextView.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
         }
+    }
+    
+    private func setGesture() {
+        let dragAndDropGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleDragAndDropGesture(_:)))
+        postImageCollectionView.addGestureRecognizer(dragAndDropGesture)
+    }
+    
+    // MARK: - Action Helper
+    
+    @objc func handleDragAndDropGesture(_ gesture: UILongPressGestureRecognizer) {
+        switch gesture.state {
+        case .began:
+            guard let targetIndexPath = postImageCollectionView.indexPathForItem(at: gesture.location(in: postImageCollectionView))
+            else { return }
+            postImageCollectionView.beginInteractiveMovementForItem(at: targetIndexPath)
+        case .changed:
+            postImageCollectionView.updateInteractiveMovementTargetPosition(gesture.location(in: postImageCollectionView))
+        case .ended:
+            postImageCollectionView.endInteractiveMovement()
+        default:
+            postImageCollectionView.cancelInteractiveMovement()
+        }
+    }
+    
+}
+
+
+// MARK: - UICollectionViewDelegate extension
+
+extension NewPostViewController: UICollectionViewDelegate {}
+
+
+// MARK: - UICollectionViewDataSource extension
+
+extension NewPostViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return postImageData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewPostImageCollectionViewCell.identifier, for: indexPath) as? NewPostImageCollectionViewCell
+        else { return UICollectionViewCell() }
+        cell.configureContentImage(to: ImageLiteral.Common.defaultImage)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let item = postImageData.remove(at: sourceIndexPath.row)
+        postImageData.insert(item, at: destinationIndexPath.row)
     }
     
 }
