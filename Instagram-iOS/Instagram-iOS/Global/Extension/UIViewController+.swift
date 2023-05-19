@@ -15,8 +15,8 @@ extension UIViewController {
         return UIBarButtonItem(customView: view)
     }
     
-    func makeNavigationBarButtonItemArea(with button: UIButton) -> UIView {
-        let offsetView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+    func makeNavigationBarButtonItemArea(with button: UIButton, to size: CGRect) -> UIView {
+        let offsetView = UIView(frame: size)
         offsetView.addSubview(button)
         return offsetView
     }

@@ -40,11 +40,34 @@ final class NewPostViewController: BaseViewController {
         return layout
     }()
     
+    private lazy var collectionViewAddCellButton: UIButton = {
+        let button = UIButton()
+        button.setImage(ImageLiteral.NewPost.addCell, for: .normal)
+        return button
+    }()
+    
+    private let shareButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("공유", for: .normal)
+        button.setTitleColor(.blue1, for: .normal)
+        button.titleLabel?.font = .bodyKorBold
+        return button
+    }()
+    
+    private let navigationBarTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "새 게시물"
+        label.font = .bodyKorBold
+        label.textColor = .black1
+        return label
+    }()
+    
     private lazy var postContentTextView: UITextView = {
         let textView = UITextView()
         textView.text = postContentPlaceholder
         textView.textColor = .gray2
         textView.font = .bodyKor
+        textView.textContainerInset = .init(top: 8, left: 16, bottom: 20, right: 16)
         return textView
     }()
     
@@ -66,6 +89,15 @@ final class NewPostViewController: BaseViewController {
     }
     
     // MARK: - Setting
+    
+    override func setNavigationBar() {
+        super.setNavigationBar()
+        
+        let backButton = BackButton(frame: .init(x: 0, y: 0, width: 24, height: 24))
+        self.navigationItem.leftBarButtonItem = makeNavigationBarButton(with: backButton)
+        self.navigationItem.rightBarButtonItem = makeNavigationBarButton(with: shareButton)
+        self.navigationItem.titleView = navigationBarTitleLabel
+    }
     
     override func setDelegate() {
         postImageCollectionView.delegate = self
@@ -123,7 +155,13 @@ final class NewPostViewController: BaseViewController {
 
 // MARK: - UICollectionViewDelegate extension
 
-extension NewPostViewController: UICollectionViewDelegate {}
+extension NewPostViewController: UICollectionViewDelegate {
+        
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+    }
+    
+}
 
 
 // MARK: - UICollectionViewDataSource extension
