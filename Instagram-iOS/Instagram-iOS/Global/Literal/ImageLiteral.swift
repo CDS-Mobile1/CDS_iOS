@@ -52,6 +52,13 @@ enum ImageLiteral {
         }
     }
     
+    enum NewPost {
+        static let tagSomeone = UIImage.load(name: "tagSomeone")
+        static let addPlace = UIImage.load(name: "addPlace")
+        static let facebook = UIImage.load(name: "facebook")
+        static let advancedSetting = UIImage.load(name: "advancedSetting")
+    }
+    
     enum Common {
         static let defaultProfile = UIImage.load(name: "defaultProfile")
     }
