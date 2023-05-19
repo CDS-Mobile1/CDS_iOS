@@ -32,6 +32,14 @@ final class NewPostViewController: BaseViewController {
         return textView
     }()
     
+    private let bottomMenus = NewPostBottomMenuType.allCases.map { BottomMenuContentView(menuType: $0) }
+    
+    private lazy var bottomMenuStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: bottomMenus)
+        stackView.axis = .vertical
+        return stackView
+    }()
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -57,8 +65,19 @@ final class NewPostViewController: BaseViewController {
         view.addSubview(postContentTextView)
         postContentTextView.snp.makeConstraints {
             $0.top.equalTo(dummyView.snp.bottom)
-            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(255)
         }
+        
+        view.addSubview(bottomMenuStackView)
+        bottomMenuStackView.snp.makeConstraints {
+            $0.top.equalTo(postContentTextView.snp.bottom)
+            $0.horizontalEdges.equalToSuperview()
+        }
+    }
+    
+    override func setStyle() {
+        view.backgroundColor = .white1
     }
     
     // MARK: - Action Helper
