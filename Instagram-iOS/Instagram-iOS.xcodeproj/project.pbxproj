@@ -28,6 +28,7 @@
 		3EEE76612A1757D400D0B80E /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE76602A1757D400D0B80E /* NewPostViewController.swift */; };
 		3EEE76632A175ECD00D0B80E /* BottomMenuContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE76622A175ECD00D0B80E /* BottomMenuContentView.swift */; };
 		3EEE76682A176C9100D0B80E /* NewPostImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE76672A176C9100D0B80E /* NewPostImageCollectionViewCell.swift */; };
+		3EEE766A2A17A2B900D0B80E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE76692A17A2B900D0B80E /* BackButton.swift */; };
 		7E8DF56F2A12306B0023948F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF56E2A12306B0023948F /* AppDelegate.swift */; };
 		7E8DF5712A12306B0023948F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF5702A12306B0023948F /* SceneDelegate.swift */; };
 		7E8DF5732A12306B0023948F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF5722A12306B0023948F /* ViewController.swift */; };
@@ -64,6 +65,7 @@
 		3EEE76602A1757D400D0B80E /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		3EEE76622A175ECD00D0B80E /* BottomMenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuContentView.swift; sourceTree = "<group>"; };
 		3EEE76672A176C9100D0B80E /* NewPostImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		3EEE76692A17A2B900D0B80E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		7E8DF56B2A12306B0023948F /* Instagram-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instagram-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E8DF56E2A12306B0023948F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E8DF5702A12306B0023948F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EEE766B2A17AEC000D0B80E /* NewPostImageCollection */ = {
+			isa = PBXGroup;
+			children = (
+				3EEE76602A1757D400D0B80E /* NewPostViewController.swift */,
+				3EEE76672A176C9100D0B80E /* NewPostImageCollectionViewCell.swift */,
+			);
+			path = NewPostImageCollection;
+			sourceTree = "<group>";
+		};
 		7E8DF5622A12306B0023948F = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				7E8DF5A92A1238C50023948F /* UIComponent.swift */,
+				3EEE76692A17A2B900D0B80E /* BackButton.swift */,
 			);
 			path = UIComponent;
 			sourceTree = "<group>";
@@ -277,8 +289,7 @@
 		7E8DF5932A1237040023948F /* NewPost */ = {
 			isa = PBXGroup;
 			children = (
-				3EEE76672A176C9100D0B80E /* NewPostImageCollectionViewCell.swift */,
-				3EEE76602A1757D400D0B80E /* NewPostViewController.swift */,
+				3EEE766B2A17AEC000D0B80E /* NewPostImageCollection */,
 				3EEE76622A175ECD00D0B80E /* BottomMenuContentView.swift */,
 			);
 			path = NewPost;
@@ -416,6 +427,7 @@
 				7E8DF59A2A12386D0023948F /* API.swift in Sources */,
 				3E9683EC2A1654CF00D6DD30 /* UIViewController+.swift in Sources */,
 				3EEE76612A1757D400D0B80E /* NewPostViewController.swift in Sources */,
+				3EEE766A2A17A2B900D0B80E /* BackButton.swift in Sources */,
 				7E8DF5B02A1239010023948F /* Story.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

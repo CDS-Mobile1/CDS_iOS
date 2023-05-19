@@ -40,12 +40,6 @@ final class NewPostViewController: BaseViewController {
         return layout
     }()
     
-    private lazy var collectionViewAddCellButton: UIButton = {
-        let button = UIButton()
-        button.setImage(ImageLiteral.NewPost.addCell, for: .normal)
-        return button
-    }()
-    
     private let shareButton: UIButton = {
         let button = UIButton()
         button.setTitle("공유", for: .normal)
@@ -155,13 +149,7 @@ final class NewPostViewController: BaseViewController {
 
 // MARK: - UICollectionViewDelegate extension
 
-extension NewPostViewController: UICollectionViewDelegate {
-        
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-    }
-    
-}
+extension NewPostViewController: UICollectionViewDelegate {}
 
 
 // MARK: - UICollectionViewDataSource extension
