@@ -26,7 +26,6 @@
 		7E8DF5AC2A1238D40023948F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF5AB2A1238D40023948F /* Font.swift */; };
 		7E8DF5AE2A1238F80023948F /* MainFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF5AD2A1238F80023948F /* MainFeed.swift */; };
 		7E8DF5B02A1239010023948F /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF5AF2A1239010023948F /* Story.swift */; };
-		7E8DF5B22A1239090023948F /* NewPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF5B12A1239090023948F /* NewPost.swift */; };
 		7E8DF5B42A1239100023948F /* DMList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF5B32A1239100023948F /* DMList.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +51,6 @@
 		7E8DF5AB2A1238D40023948F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		7E8DF5AD2A1238F80023948F /* MainFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeed.swift; sourceTree = "<group>"; };
 		7E8DF5AF2A1239010023948F /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
-		7E8DF5B12A1239090023948F /* NewPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPost.swift; sourceTree = "<group>"; };
 		7E8DF5B32A1239100023948F /* DMList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -243,7 +241,6 @@
 		7E8DF5932A1237040023948F /* NewPost */ = {
 			isa = PBXGroup;
 			children = (
-				7E8DF5B12A1239090023948F /* NewPost.swift */,
 			);
 			path = NewPost;
 			sourceTree = "<group>";
@@ -345,7 +342,6 @@
 				3E6CF47A2A14F43500DC3B2B /* BaseViewController.swift in Sources */,
 				7E8DF5A02A1238840023948F /* Models.swift in Sources */,
 				3E6CF47E2A14F84500DC3B2B /* BaseCollectionViewCell.swift in Sources */,
-				7E8DF5B22A1239090023948F /* NewPost.swift in Sources */,
 				7E8DF5AA2A1238C50023948F /* UIComponent.swift in Sources */,
 				7E8DF56F2A12306B0023948F /* AppDelegate.swift in Sources */,
 				7E8DF5AC2A1238D40023948F /* Font.swift in Sources */,
