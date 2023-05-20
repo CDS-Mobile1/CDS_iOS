@@ -24,6 +24,7 @@ final class NewPostViewController: BaseViewController {
     private lazy var postImageCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: postImageCollectionViewFlowLayout)
         collectionView.register(NewPostImageCollectionViewCell.self, forCellWithReuseIdentifier: NewPostImageCollectionViewCell.identifier)
+        collectionView.register(CollectionViewAddCellButton.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CollectionViewAddCellButton.identifier)
         collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 0)
         collectionView.isScrollEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
@@ -37,6 +38,7 @@ final class NewPostViewController: BaseViewController {
         layout.minimumLineSpacing = 12
         layout.minimumInteritemSpacing = 12
         layout.itemSize = .init(width: 70, height: 70)
+        layout.footerReferenceSize = .init(width: 40, height: 40)
         return layout
     }()
     
@@ -54,6 +56,12 @@ final class NewPostViewController: BaseViewController {
         label.font = .bodyKorBold
         label.textColor = .black1
         return label
+    }()
+    
+    private let addCellButton: UIButton = {
+        let button = UIButton()
+        button.setImage(ImageLiteral.NewPost.addCell, for: .normal)
+        return button
     }()
     
     private lazy var postContentTextView: UITextView = {
@@ -149,7 +157,19 @@ final class NewPostViewController: BaseViewController {
 
 // MARK: - UICollectionViewDelegate extension
 
-extension NewPostViewController: UICollectionViewDelegate {}
+extension NewPostViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CollectionViewAddCellButton.identifier, for: indexPath) as? CollectionViewAddCellButton
+        else { return UICollectionReusableView() }
+        return footer
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: 40, height: 40)
+    }
+    
+}
 
 
 // MARK: - UICollectionViewDataSource extension
