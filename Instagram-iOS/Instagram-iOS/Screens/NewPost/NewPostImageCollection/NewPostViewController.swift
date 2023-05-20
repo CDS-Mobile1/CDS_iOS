@@ -152,8 +152,6 @@ final class NewPostViewController: BaseViewController {
         postImageCollectionView.reloadData()
     }
     
-    // MARK: - Custom Method
-    
 }
 
 

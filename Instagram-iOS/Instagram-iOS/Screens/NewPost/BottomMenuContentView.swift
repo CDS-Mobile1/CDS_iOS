@@ -89,10 +89,6 @@ final class BottomMenuContentView: UIButton {
     // MARK: - Setting
     
     private func setLayout() {
-        self.snp.makeConstraints {
-            $0.height.equalTo(48)
-        }
-        
         addSubview(topSeparator)
         topSeparator.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -110,7 +106,7 @@ final class BottomMenuContentView: UIButton {
         addSubview(menuTitleLabel)
         menuTitleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(46)
-            $0.centerY.equalToSuperview()
+            $0.top.bottom.equalToSuperview().inset(16)
         }
         
         if menuType == .facebook {
