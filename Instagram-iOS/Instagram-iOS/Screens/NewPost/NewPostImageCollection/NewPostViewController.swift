@@ -38,7 +38,7 @@ final class NewPostViewController: BaseViewController {
         layout.minimumLineSpacing = 12
         layout.minimumInteritemSpacing = 12
         layout.itemSize = .init(width: 70, height: 70)
-        layout.footerReferenceSize = .init(width: 40, height: 40)
+        layout.footerReferenceSize = .init(width: 68, height: 40)
         return layout
     }()
     
@@ -56,12 +56,6 @@ final class NewPostViewController: BaseViewController {
         label.font = .bodyKorBold
         label.textColor = .black1
         return label
-    }()
-    
-    private let addCellButton: UIButton = {
-        let button = UIButton()
-        button.setImage(ImageLiteral.NewPost.addCell, for: .normal)
-        return button
     }()
     
     private lazy var postContentTextView: UITextView = {
@@ -115,7 +109,6 @@ final class NewPostViewController: BaseViewController {
             $0.height.equalTo(102)
         }
         
-        // TODO: 영역 정해지면 inset 값 수정하기
         view.addSubview(postContentTextView)
         postContentTextView.snp.makeConstraints {
             $0.top.equalTo(postImageCollectionView.snp.bottom)
@@ -152,6 +145,15 @@ final class NewPostViewController: BaseViewController {
         }
     }
     
+    private func addCellButtonTapped() {
+        guard postImageData.count <= 10 else { return }
+        postImageData.append(ImageLiteral.Common.defaultImage)
+        print(postImageData.count)
+        postImageCollectionView.reloadData()
+    }
+    
+    // MARK: - Custom Method
+    
 }
 
 
@@ -162,6 +164,10 @@ extension NewPostViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CollectionViewAddCellButton.identifier, for: indexPath) as? CollectionViewAddCellButton
         else { return UICollectionReusableView() }
+        let action = UIAction(identifier: .init("addCell")) { [weak self] _ in
+            self?.addCellButtonTapped()
+        }
+        footer.configureButtonAction(to: action)
         return footer
     }
     
@@ -183,7 +189,7 @@ extension NewPostViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewPostImageCollectionViewCell.identifier, for: indexPath) as? NewPostImageCollectionViewCell
         else { return UICollectionViewCell() }
-        cell.configureContentImage(to: ImageLiteral.Common.defaultImage)
+        cell.configureContentImage(to: postImageData[indexPath.row])
         return cell
     }
     

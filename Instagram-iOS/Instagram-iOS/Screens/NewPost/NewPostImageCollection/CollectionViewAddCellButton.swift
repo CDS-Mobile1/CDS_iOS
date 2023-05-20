@@ -49,6 +49,12 @@ final class CollectionViewAddCellButton: UICollectionReusableView {
     
     // MARK: - Custom Method
     
+    func configureButtonAction(to action: UIAction) {
+        addCellButton.addAction(action, for: .touchUpInside)
+    }
     
+    func removeButtonAction() {
+        addCellButton.removeAction(identifiedBy: .init("addCell"), for: .touchUpInside)
+    }
     
 }
