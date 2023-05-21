@@ -148,8 +148,16 @@ final class NewPostViewController: BaseViewController {
     private func addCellButtonTapped() {
         guard postImageData.count <= 10 else { return }
         postImageData.append(ImageLiteral.Common.defaultImage)
-        print(postImageData.count)
+        scrollToRight()
         postImageCollectionView.reloadData()
+    }
+    
+    // MARK: - Custom Method
+    
+    private func scrollToRight() {
+        let appendedCnt = postImageData.count - 3
+        let offset = CGPoint(x: 70 * appendedCnt, y: 0)
+        postImageCollectionView.setContentOffset(offset, animated: true)
     }
     
 }
@@ -166,6 +174,7 @@ extension NewPostViewController: UICollectionViewDelegate {
             self?.addCellButtonTapped()
         }
         footer.configureButtonAction(to: action)
+        if postImageData.count > 10 { footer.isHidden = true }
         return footer
     }
     
