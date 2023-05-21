@@ -43,10 +43,6 @@ final class CollectionViewAddCellButton: UICollectionReusableView {
         }
     }
     
-    // MARK: - Action Helper
-    
-    
-    
     // MARK: - Custom Method
     
     func configureButtonAction(to action: UIAction) {
