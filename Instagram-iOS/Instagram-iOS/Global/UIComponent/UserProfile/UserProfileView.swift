@@ -64,13 +64,6 @@ final class UserProfileView: UIView {
     
     // MARK: - UI Property
     
-//    lazy var profileBorderView: UIView = {
-//        let view = UIView()
-//        view.backgroundColor = .clear
-//        view.setCornerRadius(to: profileWithBorderSize / 2)
-//        return view
-//    }()
-    
     lazy var profileBorderView: UIView = {
         let view = UIView()
         view.frame = .init(x: 0, y: 0, width: profileWithBorderSize, height: profileWithBorderSize)
