@@ -114,7 +114,7 @@ final class UserProfileView: UIView {
         }
     }
     
-    func setBorder() {
+    private func setBorder() {
         let shape = configureCircularBorderShape(with: profileBorderRadius)
         let borderLayer = configureBorderLayer()
         borderLayer.mask = shape
