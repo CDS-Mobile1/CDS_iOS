@@ -71,8 +71,8 @@ final class UserProfileView: UIView {
 //        return view
 //    }()
     
-    lazy var profileBorderView: CircularBorderView = {
-        let view = CircularBorderView(radius: profileWithBorderSize / 2)
+    lazy var profileBorderView: UIView = {
+        let view = UIView()
         view.frame = .init(x: 0, y: 0, width: profileWithBorderSize, height: profileWithBorderSize)
         return view
     }()
@@ -97,7 +97,7 @@ final class UserProfileView: UIView {
         super.init(frame: .zero)
         
         setLayout()
-        configureBorder(to: self.storyStatus)
+        setBorder()
     }
     
     @available(*, unavailable)
@@ -121,27 +121,26 @@ final class UserProfileView: UIView {
         }
     }
     
+    func setBorder() {
+        let shape = configureCircularBorderShape(with: profileBorderRadius)
+        let borderLayer = configureBorderLayer()
+        borderLayer.mask = shape
+        
+        profileBorderView.layer.sublayers?.removeAll()
+        profileBorderView.layer.insertSublayer(borderLayer, at: 0)
+    }
+    
     // MARK: - Action Helper
     
     private func profileImageButtonTapped() {
-        configureBorder(to: .seen)
+        storyStatus = .seen
+        setBorder()
     }
     
     // MARK: - Custom Method
     
-    func configureBorder(to storyStatus: StoryStatus) {
-        switch storyStatus {
-        case .none: profileBorderView.setBorder(color: .clear, andWidth: 0)
-        case .seen: profileBorderView.setBorder(color: .gray5, andWidth: profileBorderWidth)
-            // FIXME: new 상태일 때 상태 변경
-        case .new: setBorderGradient()
-        case .special: profileBorderView.setBorder(color: .green1, andWidth: profileBorderWidth)
-        }
-    }
-    
-    func setBorderGradient() {
+    private func configureCircularBorderShape(with radius: CGFloat) -> CAShapeLayer {
         let shape = CAShapeLayer()
-        let radius = profileBorderRadius
         let center = CGPoint(x: profileWithBorderSize / 2, y: profileWithBorderSize / 2)
         shape.path = UIBezierPath(arcCenter: center,
                                   radius: radius,
@@ -149,19 +148,31 @@ final class UserProfileView: UIView {
         shape.lineWidth = profileBorderWidth
         shape.fillColor = UIColor.clear.cgColor
         shape.strokeColor = UIColor.black.cgColor
+        return shape
+    }
+    
+    private func configureBorderLayer() -> CAGradientLayer {
+        let borderLayer = CAGradientLayer()
+        borderLayer.frame = profileBorderView.bounds
+        borderLayer.startPoint = .init(x: 1, y: 0.1)
+        borderLayer.endPoint = .init(x: 0, y: 0.9)
+        borderLayer.locations = [0.3, 0.4, 1]
+        borderLayer.colors = configureBorderLayerColors().map { $0.cgColor }
         
-        let gradient = CAGradientLayer()
-        gradient.frame = profileBorderView.bounds
-        gradient.colors = [UIColor.Gradient.topPurple.cgColor,
-                           UIColor.Gradient.mediumRed.cgColor,
-                           UIColor.Gradient.bottomYellow.cgColor]
-        gradient.startPoint = .init(x: 1, y: 0.1)
-        gradient.endPoint = .init(x: 0, y: 0.9)
-        gradient.locations = [0.3, 0.4, 1]
-        
-        gradient.mask = shape
-        
-        profileBorderView.layer.insertSublayer(gradient, at: 0)
+        return borderLayer
+    }
+    
+    private func configureBorderLayerColors() -> [UIColor] {
+        let colors: [UIColor]
+        switch storyStatus {
+        case .none: colors = .init(repeating: .clear, count: 3)
+        case .seen: colors = .init(repeating: .gray5, count: 3)
+        case .new: colors = [.Gradient.topPurple,
+                             .Gradient.mediumRed,
+                             .Gradient.bottomYellow]
+        case .special: colors = .init(repeating: .green1, count: 3)
+        }
+        return colors
     }
     
 }
