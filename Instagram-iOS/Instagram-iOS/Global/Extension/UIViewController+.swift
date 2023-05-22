@@ -21,6 +21,10 @@ extension UIViewController {
         return offsetView
     }
     
+    func popViewController() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - keyboard dismiss
     
     func hideKeyboardWhenTappedAround() {

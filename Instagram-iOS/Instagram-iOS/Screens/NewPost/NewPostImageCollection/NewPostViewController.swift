@@ -90,6 +90,12 @@ final class NewPostViewController: BaseViewController {
         super.setNavigationBar()
         
         let backButton = BackButton(frame: .init(x: 0, y: 0, width: 24, height: 24))
+        let popAction = UIAction { [weak self] _ in self?.popViewController() }
+        backButton.addAction(popAction, for: .touchUpInside)
+        
+        let shareAction = UIAction { [weak self] _ in self?.shareButtonTapped() }
+        shareButton.addAction(shareAction, for: .touchUpInside)
+        
         self.navigationItem.leftBarButtonItem = makeNavigationBarButton(with: backButton)
         self.navigationItem.rightBarButtonItem = makeNavigationBarButton(with: shareButton)
         self.navigationItem.titleView = navigationBarTitleLabel
@@ -150,6 +156,10 @@ final class NewPostViewController: BaseViewController {
         postImageData.append(ImageLiteral.Common.defaultImage)
         scrollToRight()
         postImageCollectionView.reloadData()
+    }
+    
+    private func shareButtonTapped() {
+        // TODO: API 연결 후 POST 하는 과정 추가
     }
     
     // MARK: - Custom Method
