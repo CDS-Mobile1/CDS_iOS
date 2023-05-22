@@ -38,10 +38,18 @@ final class UserProfileView: UIView {
         }
     }
     
+    var profileBorderRadius: CGFloat {
+        switch usedView {
+        case .feed: return 18
+        case .story: return 35
+        case .dm: return 29
+        }
+    }
+    
     var profileImageSize: CGFloat {
         switch usedView {
         case .feed: return 32
-        case .story: return 64
+        case .story: return 62.76
         case .dm: return 52
         }
     }
@@ -56,10 +64,16 @@ final class UserProfileView: UIView {
     
     // MARK: - UI Property
     
-    lazy var profileBorderView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        view.setCornerRadius(to: profileWithBorderSize / 2)
+//    lazy var profileBorderView: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = .clear
+//        view.setCornerRadius(to: profileWithBorderSize / 2)
+//        return view
+//    }()
+    
+    lazy var profileBorderView: CircularBorderView = {
+        let view = CircularBorderView(radius: profileWithBorderSize / 2)
+        view.frame = .init(x: 0, y: 0, width: profileWithBorderSize, height: profileWithBorderSize)
         return view
     }()
     
@@ -97,13 +111,13 @@ final class UserProfileView: UIView {
         addSubview(profileBorderView)
         profileBorderView.snp.makeConstraints {
             $0.center.equalToSuperview()
-            $0.width.height.equalTo(profileWithBorderSize)
+            $0.size.equalTo(profileWithBorderSize)
         }
         
-        profileBorderView.addSubview(profileImageButtonView)
+        addSubview(profileImageButtonView)
         profileImageButtonView.snp.makeConstraints {
             $0.center.equalToSuperview()
-            $0.width.height.equalTo(profileImageSize)
+            $0.size.equalTo(profileImageSize)
         }
     }
     
@@ -120,9 +134,34 @@ final class UserProfileView: UIView {
         case .none: profileBorderView.setBorder(color: .clear, andWidth: 0)
         case .seen: profileBorderView.setBorder(color: .gray5, andWidth: profileBorderWidth)
             // FIXME: new 상태일 때 상태 변경
-        case .new: profileBorderView.setBorder(color: .green1, andWidth: profileBorderWidth)
+        case .new: setBorderGradient()
         case .special: profileBorderView.setBorder(color: .green1, andWidth: profileBorderWidth)
         }
+    }
+    
+    func setBorderGradient() {
+        let shape = CAShapeLayer()
+        let radius = profileBorderRadius
+        let center = CGPoint(x: profileWithBorderSize / 2, y: profileWithBorderSize / 2)
+        shape.path = UIBezierPath(arcCenter: center,
+                                  radius: radius,
+                                  startAngle: 0, endAngle: .pi * 2, clockwise: true).cgPath
+        shape.lineWidth = profileBorderWidth
+        shape.fillColor = UIColor.clear.cgColor
+        shape.strokeColor = UIColor.black.cgColor
+        
+        let gradient = CAGradientLayer()
+        gradient.frame = profileBorderView.bounds
+        gradient.colors = [UIColor.Gradient.topPurple.cgColor,
+                           UIColor.Gradient.mediumRed.cgColor,
+                           UIColor.Gradient.bottomYellow.cgColor]
+        gradient.startPoint = .init(x: 1, y: 0.1)
+        gradient.endPoint = .init(x: 0, y: 0.9)
+        gradient.locations = [0.3, 0.4, 1]
+        
+        gradient.mask = shape
+        
+        profileBorderView.layer.insertSublayer(gradient, at: 0)
     }
     
 }
