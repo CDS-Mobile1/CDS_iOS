@@ -137,10 +137,13 @@ final class UserProfileView: UIView {
         let center = CGPoint(x: profileWithBorderSize / 2, y: profileWithBorderSize / 2)
         shape.path = UIBezierPath(arcCenter: center,
                                   radius: radius,
-                                  startAngle: 0, endAngle: .pi * 2, clockwise: true).cgPath
-        shape.lineWidth = profileBorderWidth
+                                  startAngle: 0,
+                                  endAngle: .pi * 2,
+                                  clockwise: true).cgPath
         shape.fillColor = UIColor.clear.cgColor
         shape.strokeColor = UIColor.black.cgColor
+        shape.lineWidth = profileBorderWidth
+        
         return shape
     }
     
@@ -165,6 +168,7 @@ final class UserProfileView: UIView {
                              .Gradient.bottomYellow]
         case .special: colors = .init(repeating: .green1, count: 3)
         }
+        
         return colors
     }
     
