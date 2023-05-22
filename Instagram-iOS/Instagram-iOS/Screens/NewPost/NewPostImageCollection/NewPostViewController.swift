@@ -151,23 +151,8 @@ final class NewPostViewController: BaseViewController {
         }
     }
     
-    private func addCellButtonTapped() {
-        guard postImageData.count <= 10 else { return }
-        postImageData.append(ImageLiteral.Common.defaultImage)
-        scrollToRight()
-        postImageCollectionView.reloadData()
-    }
-    
     private func shareButtonTapped() {
         // TODO: API 연결 후 POST 하는 과정 추가
-    }
-    
-    // MARK: - Custom Method
-    
-    private func scrollToRight() {
-        let appendedCnt = postImageData.count - 3
-        let offset = CGPoint(x: 70 * appendedCnt, y: 0)
-        postImageCollectionView.setContentOffset(offset, animated: true)
     }
     
 }
@@ -180,11 +165,6 @@ extension NewPostViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CollectionViewAddCellButton.identifier, for: indexPath) as? CollectionViewAddCellButton
         else { return UICollectionReusableView() }
-        let action = UIAction(identifier: .init("addCell")) { [weak self] _ in
-            self?.addCellButtonTapped()
-        }
-        footer.configureButtonAction(to: action)
-        if postImageData.count > 10 { footer.isHidden = true }
         return footer
     }
     
