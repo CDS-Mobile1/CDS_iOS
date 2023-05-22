@@ -9,7 +9,7 @@ import UIKit
 
 extension UIFont {
     
-    static var title1: UIFont { return sfProFont("Bold", ofSize: 200)}
+    static var title1: UIFont { return sfProFont("Bold", ofSize: 20) }
     
     static var body: UIFont { return sfProFont("Regular", ofSize: 14) }
     
@@ -32,7 +32,7 @@ extension UIFont {
 extension UIFont {
     
     static func sfProFont(_ weight: String, ofSize size: CGFloat) -> UIFont {
-        guard let customFont = UIFont(name: "SF-Pro-Text-" + weight, size: size) else {
+        guard let customFont = UIFont(name: "SFProText-" + weight, size: size) else {
             return UIFont.systemFont(ofSize: size)
         }
         return customFont
