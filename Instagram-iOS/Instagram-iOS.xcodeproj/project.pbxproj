@@ -11,6 +11,8 @@
 		3E6CF47C2A14F63700DC3B2B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CF47B2A14F63700DC3B2B /* BaseTableViewCell.swift */; };
 		3E6CF47E2A14F84500DC3B2B /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CF47D2A14F84500DC3B2B /* BaseCollectionViewCell.swift */; };
 		3E6FFF5D2A1BBC1100166DCE /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF5C2A1BBC1100166DCE /* StoryViewController.swift */; };
+		3E6FFF5F2A1BC43700166DCE /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF5E2A1BC43700166DCE /* CommonButton.swift */; };
+		3E6FFF612A1BC8A600166DCE /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF602A1BC8A600166DCE /* UITextField+.swift */; };
 		3E9683D02A1617A800D6DD30 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3E9683CF2A1617A800D6DD30 /* Alamofire */; };
 		3E9683D32A1617C800D6DD30 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3E9683D22A1617C800D6DD30 /* SnapKit */; };
 		3E9683D62A16180800D6DD30 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3E9683D52A16180800D6DD30 /* Kingfisher */; };
@@ -50,6 +52,8 @@
 		3E6CF47B2A14F63700DC3B2B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		3E6CF47D2A14F84500DC3B2B /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E6FFF5C2A1BBC1100166DCE /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
+		3E6FFF5E2A1BC43700166DCE /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
+		3E6FFF602A1BC8A600166DCE /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		3E9683D72A162F5200D6DD30 /* AppleSDGothicNeoB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoB.ttf; sourceTree = "<group>"; };
 		3E9683D92A162F6400D6DD30 /* AppleSDGothicNeoM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoM.ttf; sourceTree = "<group>"; };
 		3E9683DB2A162F8E00D6DD30 /* AppleSDGothicNeoSB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoSB.ttf; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 				3E9683ED2A16562700D6DD30 /* UIView+.swift */,
 				3E9683E32A16319A00D6DD30 /* UIColor+.swift */,
 				3E9683E72A16456500D6DD30 /* UIFont+.swift */,
+				3E6FFF602A1BC8A600166DCE /* UITextField+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 			children = (
 				3EEE765E2A1678E800D0B80E /* UserProfileView.swift */,
 				7E8DF5A92A1238C50023948F /* UIComponent.swift */,
+				3E6FFF5E2A1BC43700166DCE /* CommonButton.swift */,
 			);
 			path = UIComponent;
 			sourceTree = "<group>";
@@ -416,6 +422,8 @@
 				7E8DF5982A12385E0023948F /* Protocol.swift in Sources */,
 				7E8DF59A2A12386D0023948F /* API.swift in Sources */,
 				3E9683EC2A1654CF00D6DD30 /* UIViewController+.swift in Sources */,
+				3E6FFF612A1BC8A600166DCE /* UITextField+.swift in Sources */,
+				3E6FFF5F2A1BC43700166DCE /* CommonButton.swift in Sources */,
 				7E8DF5B02A1239010023948F /* Story.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,7 +563,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 77GRA593GT;
+				DEVELOPMENT_TEAM = S9G6YGQ76H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Instagram-iOS/Global/Supports/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -568,7 +576,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "sarangkim.Instagram-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Instagram-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -583,7 +591,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 77GRA593GT;
+				DEVELOPMENT_TEAM = S9G6YGQ76H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Instagram-iOS/Global/Supports/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -596,7 +604,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "sarangkim.Instagram-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Instagram-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
