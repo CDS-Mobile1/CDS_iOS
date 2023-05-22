@@ -126,6 +126,7 @@ final class UserProfileView: UIView {
     // MARK: - Action Helper
     
     private func profileImageButtonTapped() {
+        guard storyStatus != .none else { return }
         storyStatus = .seen
         setBorder()
     }
