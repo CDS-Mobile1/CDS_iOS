@@ -11,7 +11,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let view1 = UserProfileView(usedView: .story, storyStatus: .new)
+        let view1 = UserProfileView(usedView: .dm, storyStatus: .none)
         view.backgroundColor = .white
         view.addSubview(view1)
         view1.snp.makeConstraints {

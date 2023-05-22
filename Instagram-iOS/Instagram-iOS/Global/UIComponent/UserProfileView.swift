@@ -32,17 +32,17 @@ final class UserProfileView: UIView {
     
     var profileWithBorderSize: CGFloat {
         switch usedView {
-        case .feed: return 60
+        case .feed: return 37
         case .story: return 72
-        case .dm: return 37
+        case .dm: return 60
         }
     }
     
     var profileImageSize: CGFloat {
         switch usedView {
-        case .feed: return 52
+        case .feed: return 32
         case .story: return 64
-        case .dm: return 32
+        case .dm: return 52
         }
     }
     
@@ -60,7 +60,6 @@ final class UserProfileView: UIView {
         let view = UIView()
         view.backgroundColor = .clear
         view.setCornerRadius(to: profileWithBorderSize / 2)
-        view.setGradient(color1: .red, color2: .blue)
         return view
     }()
     
