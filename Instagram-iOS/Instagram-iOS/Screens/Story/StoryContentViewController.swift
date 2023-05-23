@@ -17,6 +17,8 @@ final class StoryContentViewController: BaseViewController {
     
     let storyCount: Int
     
+    var currentStoryNum: Int = 0
+    
     // MARK: - UI Property
     
     private let storyImageView: UIImageView = {
@@ -24,6 +26,18 @@ final class StoryContentViewController: BaseViewController {
         imageView.contentMode = .scaleAspectFill
         imageView.setCornerRadius(to: 8)
         return imageView
+    }()
+    
+    private let nextTouchAreaView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+
+    private let previousTouchAreaView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
     }()
     
     private lazy var progressBarStackView: UIStackView = {
@@ -68,6 +82,7 @@ final class StoryContentViewController: BaseViewController {
     
     private lazy var bottomButtonStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [storyLikeButton, storyDMButton])
+        stackView.distribution = .fillProportionally
         stackView.spacing = 16
         return stackView
     }()
@@ -91,6 +106,7 @@ final class StoryContentViewController: BaseViewController {
         
         hideKeyboardWhenTappedAround()
         setProgressBarStackView(to: storyCount)
+        configureProgressBars()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,6 +123,18 @@ final class StoryContentViewController: BaseViewController {
         storyImageView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.horizontalEdges.equalToSuperview()
+        }
+        
+        view.addSubview(previousTouchAreaView)
+        previousTouchAreaView.snp.makeConstraints {
+            $0.verticalEdges.leading.equalToSuperview()
+            $0.width.equalTo(SizeLiteral.Screen.width / 3)
+        }
+        
+        view.addSubview(nextTouchAreaView)
+        nextTouchAreaView.snp.makeConstraints {
+            $0.verticalEdges.trailing.equalToSuperview()
+            $0.leading.equalTo(previousTouchAreaView.snp.trailing)
         }
         
         view.addSubview(progressBarStackView)
@@ -139,8 +167,7 @@ final class StoryContentViewController: BaseViewController {
     private func setProgressBarStackView(to count: Int) {
         for _ in 0..<count {
             let progressBarView = UIProgressView()
-            progressBarView.accessibilityIdentifier = ""
-            progressBarView.backgroundColor = .gray3
+            progressBarView.trackTintColor = .gray3
             progressBarView.progressTintColor = .gray5
             progressBarView.setCornerRadius(to: 1)
             progressBarStackView.addArrangedSubview(progressBarView)
@@ -159,6 +186,11 @@ final class StoryContentViewController: BaseViewController {
     
     // MARK: - Custom Method
     
-    
+    private func configureProgressBars() {
+        guard let progressBars = progressBarStackView.arrangedSubviews as? [UIProgressView]
+        else { return }
+        progressBars[currentStoryNum].setProgress(1, animated: false)
+        currentStoryNum += 1
+    }
     
 }
