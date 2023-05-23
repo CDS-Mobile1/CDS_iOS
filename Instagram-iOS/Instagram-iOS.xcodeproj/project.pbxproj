@@ -10,9 +10,10 @@
 		3E6CF47A2A14F43500DC3B2B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CF4792A14F43500DC3B2B /* BaseViewController.swift */; };
 		3E6CF47C2A14F63700DC3B2B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CF47B2A14F63700DC3B2B /* BaseTableViewCell.swift */; };
 		3E6CF47E2A14F84500DC3B2B /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CF47D2A14F84500DC3B2B /* BaseCollectionViewCell.swift */; };
-		3E6FFF5D2A1BBC1100166DCE /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF5C2A1BBC1100166DCE /* StoryViewController.swift */; };
+		3E6FFF5D2A1BBC1100166DCE /* StoryContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF5C2A1BBC1100166DCE /* StoryContentViewController.swift */; };
 		3E6FFF5F2A1BC43700166DCE /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF5E2A1BC43700166DCE /* CommonButton.swift */; };
 		3E6FFF612A1BC8A600166DCE /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF602A1BC8A600166DCE /* UITextField+.swift */; };
+		3E6FFF632A1C5FA700166DCE /* StoryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF622A1C5FA700166DCE /* StoryPageViewController.swift */; };
 		3E9683D02A1617A800D6DD30 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3E9683CF2A1617A800D6DD30 /* Alamofire */; };
 		3E9683D32A1617C800D6DD30 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3E9683D22A1617C800D6DD30 /* SnapKit */; };
 		3E9683D62A16180800D6DD30 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3E9683D52A16180800D6DD30 /* Kingfisher */; };
@@ -54,9 +55,10 @@
 		3E6CF4792A14F43500DC3B2B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		3E6CF47B2A14F63700DC3B2B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		3E6CF47D2A14F84500DC3B2B /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
-		3E6FFF5C2A1BBC1100166DCE /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
+		3E6FFF5C2A1BBC1100166DCE /* StoryContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryContentViewController.swift; sourceTree = "<group>"; };
 		3E6FFF5E2A1BC43700166DCE /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
 		3E6FFF602A1BC8A600166DCE /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		3E6FFF622A1C5FA700166DCE /* StoryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPageViewController.swift; sourceTree = "<group>"; };
 		3E9683D72A162F5200D6DD30 /* AppleSDGothicNeoB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoB.ttf; sourceTree = "<group>"; };
 		3E9683D92A162F6400D6DD30 /* AppleSDGothicNeoM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoM.ttf; sourceTree = "<group>"; };
 		3E9683DB2A162F8E00D6DD30 /* AppleSDGothicNeoSB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoSB.ttf; sourceTree = "<group>"; };
@@ -240,8 +242,6 @@
 		7E8DF58D2A1236C00023948F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				3E9683E32A16319A00D6DD30 /* UIColor+.swift */,
-				3E9683E72A16456500D6DD30 /* UIFont+.swift */,
 				3E9683EB2A1654CF00D6DD30 /* UIViewController+.swift */,
 				3E9683ED2A16562700D6DD30 /* UIView+.swift */,
 				3E9683E32A16319A00D6DD30 /* UIColor+.swift */,
@@ -295,7 +295,8 @@
 			isa = PBXGroup;
 			children = (
 				7E8DF5AF2A1239010023948F /* Story.swift */,
-				3E6FFF5C2A1BBC1100166DCE /* StoryViewController.swift */,
+				3E6FFF5C2A1BBC1100166DCE /* StoryContentViewController.swift */,
+				3E6FFF622A1C5FA700166DCE /* StoryPageViewController.swift */,
 			);
 			path = Story;
 			sourceTree = "<group>";
@@ -423,9 +424,10 @@
 				7E8DF59E2A12387E0023948F /* Service.swift in Sources */,
 				3E6CF47C2A14F63700DC3B2B /* BaseTableViewCell.swift in Sources */,
 				3E9683F02A1656A800D6DD30 /* SizeLiteral.swift in Sources */,
-				3E6FFF5D2A1BBC1100166DCE /* StoryViewController.swift in Sources */,
+				3E6FFF5D2A1BBC1100166DCE /* StoryContentViewController.swift in Sources */,
 				3E9683EE2A16562700D6DD30 /* UIView+.swift in Sources */,
 				7E8DF5AE2A1238F80023948F /* MainFeed.swift in Sources */,
+				3E6FFF632A1C5FA700166DCE /* StoryPageViewController.swift in Sources */,
 				3EEE765F2A1678E800D0B80E /* UserProfileView.swift in Sources */,
 				3E6CF47A2A14F43500DC3B2B /* BaseViewController.swift in Sources */,
 				3E9683E42A16319A00D6DD30 /* UIColor+.swift in Sources */,

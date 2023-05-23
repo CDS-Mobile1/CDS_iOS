@@ -9,14 +9,13 @@ import UIKit
 
 import SnapKit
 
-final class StoryViewController: BaseViewController {
+final class StoryContentViewController: BaseViewController {
     
     // MARK: - Property
     
     let storyUserID: Int
     
-    let storyCount: Int = 1
-    
+    let storyCount: Int
     
     // MARK: - UI Property
     
@@ -27,28 +26,24 @@ final class StoryViewController: BaseViewController {
         return imageView
     }()
     
-//    private let progressBarView: UIProgressView = {
-//        let view = UIProgressView()
-//        view.backgroundColor = .gray3
-//        view.progressTintColor = .gray5
-//        return view
-//    }()
-    
-//    private lazy var progressBarStackView: UIStackView = {
-//        let stackView = UIStackView(arrangedSubviews: [progressBarView])
-//        stackView.spacing = 4
-//        return stackView
-//    }()
-    
-    private lazy var progressBarStackView = UIStackView()
+    private lazy var progressBarStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [])
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 4
+        return stackView
+    }()
     
     private let dmTextField: UITextField = {
         let textField = UITextField()
+        let paddingView = UIView(frame: .init(x: 0, y: 0, width: 19, height: 1))
         textField.setCornerRadius(to: 21)
         textField.setBorder(color: .gray2, andWidth: 1)
         textField.setAttributedPlaceholder(of: "메시지 보내기", with: .white1)
-        textField.leftView = UIView(frame: .init(x: 0, y: 0, width: 19, height: 1))
+        textField.leftView = paddingView
+        textField.rightView = paddingView
         textField.leftViewMode = .always
+        textField.rightViewMode = .always
         textField.textColor = .white1
         textField.font = .bodyKor
         return textField
@@ -79,8 +74,9 @@ final class StoryViewController: BaseViewController {
     
     // MARK: - Life Cycle
     
-    init(userId: Int) {
+    init(userId: Int, storyCount: Int) {
         self.storyUserID = userId
+        self.storyCount = storyCount
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -88,6 +84,13 @@ final class StoryViewController: BaseViewController {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        hideKeyboardWhenTappedAround()
+        setProgressBarStackView(to: storyCount)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,12 +109,19 @@ final class StoryViewController: BaseViewController {
             $0.horizontalEdges.equalToSuperview()
         }
         
+        view.addSubview(progressBarStackView)
+        progressBarStackView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(8)
+            $0.horizontalEdges.equalToSuperview().inset(8)
+            $0.height.equalTo(2)
+        }
+        
         view.addSubview(dmTextField)
         dmTextField.snp.makeConstraints {
             $0.top.equalTo(storyImageView.snp.bottom).offset(18)
             $0.height.equalTo(42)
             $0.bottom.equalToSuperview().inset(41)
-            $0.leading.equalTo(16)
+            $0.leading.equalToSuperview().inset(16)
         }
         
         view.addSubview(bottomButtonStackView)
@@ -120,7 +130,6 @@ final class StoryViewController: BaseViewController {
             $0.centerY.equalTo(dmTextField)
             $0.trailing.equalToSuperview().inset(15)
         }
-        
     }
     
     override func setStyle() {
@@ -128,13 +137,14 @@ final class StoryViewController: BaseViewController {
     }
     
     private func setProgressBarStackView(to count: Int) {
-        let progressBarView: UIProgressView = {
-            let view = UIProgressView()
-            view.backgroundColor = .gray3
-            view.progressTintColor = .gray5
-            return view
-        }()
-        progressBarStackView.addArrangedSubview(progressBarView)
+        for _ in 0..<count {
+            let progressBarView = UIProgressView()
+            progressBarView.accessibilityIdentifier = ""
+            progressBarView.backgroundColor = .gray3
+            progressBarView.progressTintColor = .gray5
+            progressBarView.setCornerRadius(to: 1)
+            progressBarStackView.addArrangedSubview(progressBarView)
+        }
     }
     
     // MARK: - Action Helper
