@@ -44,6 +44,8 @@ enum ImageLiteral {
     enum Story {
         enum Top {
             static let tagged = UIImage.load(name: "tagged")
+            static let setting = UIImage.load(name: "setting")
+            static let sampleProfileImage = UIImage.load(name: "sampleProfileImage")
         }
         
         enum Bottom {

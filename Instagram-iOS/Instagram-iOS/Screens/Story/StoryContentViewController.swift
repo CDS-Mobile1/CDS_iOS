@@ -26,7 +26,7 @@ final class StoryContentViewController: BaseViewController {
     // MARK: - UI Property
     
     private lazy var storyImageView: UIImageView = {
-        let imageView = UIImageView(image: ImageLiteral.Common.defaultImage)
+        let imageView = UIImageView(image: ImageLiteral.Common.rightChevron)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(storyTapped(_:)))
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFill
@@ -40,6 +40,47 @@ final class StoryContentViewController: BaseViewController {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = 4
+        return stackView
+    }()
+    
+    private let userProfileButton: UIButton = {
+        let button = UIButton()
+        button.setImage(ImageLiteral.Common.defaultImage, for: .normal)
+        button.setCornerRadius(to: 16)
+        return button
+    }()
+    
+    private let userNickNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "some user name"
+        label.font = .detail2
+        label.textColor = .white1
+        return label
+    }()
+    
+    private let timePastLabel: UILabel = {
+        let label = UILabel()
+        label.text = "7분"
+        label.font = .detail3
+        label.textColor = .white1
+        return label
+    }()
+    
+    private let taggedUsersButton: UIButton = {
+        let button = UIButton()
+        button.setImage(ImageLiteral.Story.Top.tagged, for: .normal)
+        return button
+    }()
+    
+    private let settingButton: UIButton = {
+        let button = UIButton()
+        button.setImage(ImageLiteral.Story.Top.setting, for: .normal)
+        return button
+    }()
+    
+    private lazy var topButtonStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [taggedUsersButton, settingButton])
+        stackView.spacing = 3
         return stackView
     }()
     
@@ -108,6 +149,8 @@ final class StoryContentViewController: BaseViewController {
         
         // TODO: change transition style
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        configureProgressBars()
     }
     
     // MARK: - Setting
@@ -124,6 +167,31 @@ final class StoryContentViewController: BaseViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(8)
             $0.horizontalEdges.equalToSuperview().inset(8)
             $0.height.equalTo(2)
+        }
+        
+        view.addSubview(userProfileButton)
+        userProfileButton.snp.makeConstraints {
+            $0.top.equalTo(progressBarStackView.snp.bottom).offset(8)
+            $0.leading.equalToSuperview().inset(10)
+            $0.size.equalTo(32)
+        }
+        
+        view.addSubview(userNickNameLabel)
+        userNickNameLabel.snp.makeConstraints {
+            $0.centerY.equalTo(userProfileButton)
+            $0.leading.equalTo(userProfileButton.snp.trailing).offset(12)
+        }
+        
+        view.addSubview(timePastLabel)
+        timePastLabel.snp.makeConstraints {
+            $0.centerY.equalTo(userNickNameLabel)
+            $0.leading.equalTo(userNickNameLabel.snp.trailing).offset(4)
+        }
+        
+        view.addSubview(topButtonStackView)
+        topButtonStackView.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(10)
+            $0.centerY.equalTo(userProfileButton)
         }
         
         view.addSubview(dmTextField)
