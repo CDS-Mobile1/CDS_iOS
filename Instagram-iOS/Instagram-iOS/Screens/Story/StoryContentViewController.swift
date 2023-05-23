@@ -19,7 +19,7 @@ final class StoryContentViewController: BaseViewController {
     
     var currentStoryIndex: Int = 0 {
         didSet {
-            // TODO: configure image with index
+            configureCurrentIndexStory()
         }
     }
     
@@ -162,11 +162,9 @@ final class StoryContentViewController: BaseViewController {
     private func storyTapped(_ sender: UITapGestureRecognizer) {
         let touchPos = sender.location(ofTouch: 0, in: view)
         if touchPos.x < SizeLiteral.Screen.width / 3 {
-            showPreviousStory()
-            print(currentStoryIndex)
+            currentStoryIndex -= 1
         } else {
-            showNextStory()
-            print(currentStoryIndex)
+            currentStoryIndex += 1
         }
     }
     
@@ -180,20 +178,24 @@ final class StoryContentViewController: BaseViewController {
     
     // MARK: - Custom Method
     
-    private func showPreviousStory() {
-        guard currentStoryIndex >= 0, let progressBars = progressBarStackView.arrangedSubviews as? [UIProgressView]
-        else { return }
-        progressBars[currentStoryIndex].setProgress(0, animated: false)
-        // TODO: show previous story
-        currentStoryIndex -= 1
+    private func configureCurrentIndexStory() {
+        if currentStoryIndex >= 0, currentStoryIndex < storyCount {
+            configureProgressBars()
+            // TODO: change image to next story
+        } else if currentStoryIndex < 0 {
+            print("previous user")
+        } else if currentStoryIndex >= storyCount {
+            print("next user")
+        }
     }
     
-    private func showNextStory() {
-        guard currentStoryIndex < storyCount - 1, let progressBars = progressBarStackView.arrangedSubviews as? [UIProgressView]
+    private func configureProgressBars() {
+        guard let progressBars = progressBarStackView.arrangedSubviews as? [UIProgressView]
         else { return }
-        // TODO: show next story
-        currentStoryIndex += 1
         progressBars[currentStoryIndex].setProgress(1, animated: false)
+        if currentStoryIndex < storyCount - 1 {
+            progressBars[currentStoryIndex + 1].setProgress(0, animated: false)
+        }
     }
     
 }
