@@ -21,6 +21,8 @@ enum ImageLiteral {
             static let camera = UIImage.load(name: "camera")
             static let newDM = UIImage.load(name: "newDM")
         }
+        
+        static let back = UIImage.load(name: "back")
     }
     
     enum TabBar {
@@ -52,8 +54,17 @@ enum ImageLiteral {
         }
     }
     
+    enum NewPost {
+        static let tagSomeone = UIImage.load(name: "tagSomeone")
+        static let addPlace = UIImage.load(name: "addPlace")
+        static let facebook = UIImage.load(name: "facebook")
+        static let advancedSetting = UIImage.load(name: "advancedSetting")
+        static let addCell = UIImage.load(name: "addCell")
+    }
+    
     enum Common {
-        static let defaultProfile = UIImage.load(name: "defaultProfile")
+        static let defaultImage = UIImage.load(name: "defaultImage")
+        static let rightChevron = UIImage.load(name: "rightChevron")
     }
     
 }

@@ -44,7 +44,7 @@ class BaseViewController: UIViewController {
     }
     
     func setStyle() {
-        // override to use
+        self.view.backgroundColor = .white1
     }
     
 }
