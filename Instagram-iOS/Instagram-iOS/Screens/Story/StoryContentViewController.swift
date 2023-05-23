@@ -17,27 +17,22 @@ final class StoryContentViewController: BaseViewController {
     
     let storyCount: Int
     
-    var currentStoryNum: Int = 0
+    var currentStoryIndex: Int = 0 {
+        didSet {
+            // TODO: configure image with index
+        }
+    }
     
     // MARK: - UI Property
     
-    private let storyImageView: UIImageView = {
+    private lazy var storyImageView: UIImageView = {
         let imageView = UIImageView(image: ImageLiteral.Common.defaultImage)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(storyTapped(_:)))
+        imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFill
         imageView.setCornerRadius(to: 8)
+        imageView.addGestureRecognizer(tapGesture)
         return imageView
-    }()
-    
-    private let nextTouchAreaView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        return view
-    }()
-
-    private let previousTouchAreaView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        return view
     }()
     
     private lazy var progressBarStackView: UIStackView = {
@@ -106,7 +101,6 @@ final class StoryContentViewController: BaseViewController {
         
         hideKeyboardWhenTappedAround()
         setProgressBarStackView(to: storyCount)
-        configureProgressBars()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -123,18 +117,6 @@ final class StoryContentViewController: BaseViewController {
         storyImageView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.horizontalEdges.equalToSuperview()
-        }
-        
-        view.addSubview(previousTouchAreaView)
-        previousTouchAreaView.snp.makeConstraints {
-            $0.verticalEdges.leading.equalToSuperview()
-            $0.width.equalTo(SizeLiteral.Screen.width / 3)
-        }
-        
-        view.addSubview(nextTouchAreaView)
-        nextTouchAreaView.snp.makeConstraints {
-            $0.verticalEdges.trailing.equalToSuperview()
-            $0.leading.equalTo(previousTouchAreaView.snp.trailing)
         }
         
         view.addSubview(progressBarStackView)
@@ -176,6 +158,18 @@ final class StoryContentViewController: BaseViewController {
     
     // MARK: - Action Helper
     
+    @objc
+    private func storyTapped(_ sender: UITapGestureRecognizer) {
+        let touchPos = sender.location(ofTouch: 0, in: view)
+        if touchPos.x < SizeLiteral.Screen.width / 3 {
+            showPreviousStory()
+            print(currentStoryIndex)
+        } else {
+            showNextStory()
+            print(currentStoryIndex)
+        }
+    }
+    
     private func storyLikeButtonTapped() {
         // TODO: some action
     }
@@ -186,11 +180,20 @@ final class StoryContentViewController: BaseViewController {
     
     // MARK: - Custom Method
     
-    private func configureProgressBars() {
-        guard let progressBars = progressBarStackView.arrangedSubviews as? [UIProgressView]
+    private func showPreviousStory() {
+        guard currentStoryIndex >= 0, let progressBars = progressBarStackView.arrangedSubviews as? [UIProgressView]
         else { return }
-        progressBars[currentStoryNum].setProgress(1, animated: false)
-        currentStoryNum += 1
+        progressBars[currentStoryIndex].setProgress(0, animated: false)
+        // TODO: show previous story
+        currentStoryIndex -= 1
+    }
+    
+    private func showNextStory() {
+        guard currentStoryIndex < storyCount - 1, let progressBars = progressBarStackView.arrangedSubviews as? [UIProgressView]
+        else { return }
+        // TODO: show next story
+        currentStoryIndex += 1
+        progressBars[currentStoryIndex].setProgress(1, animated: false)
     }
     
 }
