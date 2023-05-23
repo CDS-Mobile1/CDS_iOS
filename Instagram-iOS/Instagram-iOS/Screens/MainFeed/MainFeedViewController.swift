@@ -18,7 +18,7 @@ class MainFeedViewController: BaseViewController {
         let tableView = UITableView()
         
         let storyView = StoryCollectionView()
-        storyView.frame = .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 115)
+        storyView.frame = .init(x: 0, y: 0, width: SizeLiteral.Screen.width, height: 115)
 //        tableView.separatorStyle = .none
         tableView.tableHeaderView = storyView
         return tableView
@@ -52,8 +52,7 @@ class MainFeedViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //        setNavigationBar()
+      
     }
     
     // MARK: - Setting
@@ -84,7 +83,7 @@ class MainFeedViewController: BaseViewController {
         view.backgroundColor = . black
         view.addSubview(mainCollectionTableView)
         mainCollectionTableView.snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
     }

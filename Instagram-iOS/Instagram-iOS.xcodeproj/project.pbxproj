@@ -270,8 +270,8 @@
 		7E8DF5912A1236F30023948F /* MainFeed */ = {
 			isa = PBXGroup;
 			children = (
-				7E0148BC2A1BE8580036147D /* StoryCollection */,
 				7E0148BA2A1890530036147D /* MainFeedViewController.swift */,
+				7E0148BC2A1BE8580036147D /* StoryCollection */,
 			);
 			path = MainFeed;
 			sourceTree = "<group>";

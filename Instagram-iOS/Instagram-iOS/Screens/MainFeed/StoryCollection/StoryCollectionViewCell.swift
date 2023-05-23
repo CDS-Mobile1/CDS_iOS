@@ -8,11 +8,9 @@
 import UIKit
 import SnapKit
 
-class StoryCollectionViewCell: UICollectionViewCell {
+class StoryCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Property
-    
-    static let identifier = "StoryCollectionViewCell"
     
     // MARK: - UI Property
     
@@ -27,7 +25,6 @@ class StoryCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setLayout()
     }
     
     @available(*, unavailable)
@@ -37,7 +34,7 @@ class StoryCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Setting
     
-    func setLayout() {
+    override func setLayout() {
         addSubview(colorView)
         colorView.snp.makeConstraints {
             $0.edges.equalToSuperview()
