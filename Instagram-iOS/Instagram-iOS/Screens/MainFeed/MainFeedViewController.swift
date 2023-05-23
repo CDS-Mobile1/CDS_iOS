@@ -9,9 +9,7 @@ import UIKit
 import SnapKit
 
 class MainFeedViewController: BaseViewController {
-    
-    // MARK: - Property
-    
+   
     // MARK: - UI Property
     
     private let mainCollectionTableView: UITableView = {
@@ -38,13 +36,12 @@ class MainFeedViewController: BaseViewController {
         return button
     }()
     
-    lazy var rightStackView: UIStackView = {
+    private lazy var rightStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [dmButton, likeButton])
         stackView.distribution = .equalSpacing
         stackView.alignment = .fill
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
-        stackView.spacing = 30
+        stackView.spacing = 25
         return stackView
     }()
     
@@ -65,11 +62,6 @@ class MainFeedViewController: BaseViewController {
         
         let dmButton = makeNavigationBarButton(with: dmButton)
         let likeButton = makeNavigationBarButton(with: likeButton)
-        navigationItem.rightBarButtonItems = [
-            dmButton,
-            likeButton
-        ]
-        
         let rightStackBarButtonItem = UIBarButtonItem(customView: rightStackView)
         navigationItem.rightBarButtonItem = rightStackBarButtonItem
     }
@@ -87,12 +79,7 @@ class MainFeedViewController: BaseViewController {
             $0.horizontalEdges.bottom.equalToSuperview()
         }
     }
-    
-    // MARK: - Action Helper
-    
-    // MARK: - Custom Method
-    
-    
+
 }
 
 
@@ -107,7 +94,7 @@ extension MainFeedViewController: UITableViewDelegate {
 
 extension MainFeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

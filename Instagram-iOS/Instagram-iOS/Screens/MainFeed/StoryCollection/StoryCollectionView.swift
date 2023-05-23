@@ -18,7 +18,7 @@ final class StoryCollectionView: UIView {
         .systemGray2,
         .systemGray3,
         .systemGray4,
-        .systemGray5
+        .systemGray5,
     ]
     
     private enum Size {
@@ -102,4 +102,3 @@ extension StoryCollectionView: UICollectionViewDataSource {
     }
     
 }
-
