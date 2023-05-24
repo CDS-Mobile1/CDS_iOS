@@ -236,6 +236,11 @@ final class StoryContentViewController: BaseViewController {
         }
     }
     
+    private func taggedUsersButtonTapped() {
+        fetchTaggedUsersList()
+        // TODO: 하프모달 띄우기
+    }
+    
     private func storyLikeButtonTapped() {
         // TODO: some action
     }
@@ -264,6 +269,12 @@ final class StoryContentViewController: BaseViewController {
         if currentStoryIndex < storyCount - 1 {
             progressBars[currentStoryIndex + 1].setProgress(0, animated: false)
         }
+    }
+    
+    // MARK: - API
+    
+    private func fetchTaggedUsersList() {
+        // TODO: 태그되어 있는 유저 리스트 받아오기
     }
     
 }
