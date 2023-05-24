@@ -9,8 +9,12 @@ import UIKit
 
 extension UIFont {
     
+    static var title1: UIFont { return sfProFont("Bold", ofSize: 20) }
+    
     static var body: UIFont { return sfProFont("Regular", ofSize: 14) }
+  
     static var bodyKor: UIFont { return appleSDGothicNeo("Medium", ofSize: 14) }
+  
     static var bodyKorBold: UIFont { return appleSDGothicNeo("Bold", ofSize: 14) }
     
     static var detail1: UIFont { return sfProFont("Semibold", ofSize: 12) }
