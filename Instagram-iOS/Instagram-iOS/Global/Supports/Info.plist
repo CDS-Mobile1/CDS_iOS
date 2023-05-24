@@ -4,12 +4,13 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SF-Pro-Text-Medium.ttf</string>
-		<string></string>
-		<string></string>
-		<string></string>
-		<string></string>
-		<string></string>
+		<string>SF-Pro-Text-Medium.otf</string>
+		<string>SF-Pro-Text-Regular.otf</string>
+		<string>SF-Pro-Text-Semibold.otf</string>
+    		<string>SF-Pro-Text-Bold.ttf</string>
+		<string>AppleSDGothicNeoSB.ttf</string>
+		<string>AppleSDGothicNeoB.ttf</string>
+		<string>AppleSDGothicNeoM.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
