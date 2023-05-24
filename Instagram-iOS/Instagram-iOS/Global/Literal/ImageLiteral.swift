@@ -18,8 +18,11 @@ enum ImageLiteral {
         }
         
         enum DMList {
+            static let arrowBack = UIImage.load(name: "ArrowBack")
+            static let arrowBottom = UIImage.load(name: "ArrowBottom")
             static let camera = UIImage.load(name: "camera")
-            static let newDM = UIImage.load(name: "newDM")
+            static let newDM = UIImage.load(name: "newdm")
+            static let search = UIImage.load(name: "searchDm")
         }
         
         static let back = UIImage.load(name: "back")
