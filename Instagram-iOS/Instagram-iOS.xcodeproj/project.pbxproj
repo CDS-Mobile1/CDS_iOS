@@ -14,6 +14,8 @@
 		3E6FFF5F2A1BC43700166DCE /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF5E2A1BC43700166DCE /* CommonButton.swift */; };
 		3E6FFF612A1BC8A600166DCE /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF602A1BC8A600166DCE /* UITextField+.swift */; };
 		3E6FFF632A1C5FA700166DCE /* StoryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF622A1C5FA700166DCE /* StoryPageViewController.swift */; };
+		3E6FFF672A1D93F400166DCE /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF662A1D93F400166DCE /* Story.swift */; };
+		3E6FFF692A1D94A200166DCE /* UserWithStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF682A1D94A200166DCE /* UserWithStory.swift */; };
 		3E9683D02A1617A800D6DD30 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3E9683CF2A1617A800D6DD30 /* Alamofire */; };
 		3E9683D32A1617C800D6DD30 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3E9683D22A1617C800D6DD30 /* SnapKit */; };
 		3E9683D62A16180800D6DD30 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3E9683D52A16180800D6DD30 /* Kingfisher */; };
@@ -58,6 +60,8 @@
 		3E6FFF5E2A1BC43700166DCE /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
 		3E6FFF602A1BC8A600166DCE /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		3E6FFF622A1C5FA700166DCE /* StoryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPageViewController.swift; sourceTree = "<group>"; };
+		3E6FFF662A1D93F400166DCE /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		3E6FFF682A1D94A200166DCE /* UserWithStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWithStory.swift; sourceTree = "<group>"; };
 		3E9683D72A162F5200D6DD30 /* AppleSDGothicNeoB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoB.ttf; sourceTree = "<group>"; };
 		3E9683D92A162F6400D6DD30 /* AppleSDGothicNeoM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoM.ttf; sourceTree = "<group>"; };
 		3E9683DB2A162F8E00D6DD30 /* AppleSDGothicNeoSB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoSB.ttf; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				7E8DF59F2A1238840023948F /* Models.swift */,
+				3E6FFF662A1D93F400166DCE /* Story.swift */,
+				3E6FFF682A1D94A200166DCE /* UserWithStory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -419,6 +425,7 @@
 				3EEE766F2A17B5D800D0B80E /* CollectionViewAddCellButton.swift in Sources */,
 				7E8DF59C2A1238770023948F /* EndPoint.swift in Sources */,
 				7E8DF59E2A12387E0023948F /* Service.swift in Sources */,
+				3E6FFF672A1D93F400166DCE /* Story.swift in Sources */,
 				3E6CF47C2A14F63700DC3B2B /* BaseTableViewCell.swift in Sources */,
 				3E9683F02A1656A800D6DD30 /* SizeLiteral.swift in Sources */,
 				3E6FFF5D2A1BBC1100166DCE /* StoryContentViewController.swift in Sources */,
@@ -444,6 +451,7 @@
 				3E6FFF612A1BC8A600166DCE /* UITextField+.swift in Sources */,
 				3E6FFF5F2A1BC43700166DCE /* CommonButton.swift in Sources */,
 				3EEE76612A1757D400D0B80E /* NewPostViewController.swift in Sources */,
+				3E6FFF692A1D94A200166DCE /* UserWithStory.swift in Sources */,
 				3EEE766A2A17A2B900D0B80E /* BackButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

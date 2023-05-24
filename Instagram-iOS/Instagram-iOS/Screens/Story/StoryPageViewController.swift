@@ -20,7 +20,13 @@ final class StoryPageViewController: UIPageViewController {
     
     // MARK: - Property
     
-    private let allMemberStoryViewControllers: [StoryContentViewController] = []
+    // TODO: MainFeed 에서 몇 번째 스토리를 누르냐에 따라 달라짐
+    private var currentUserIndex = 0
+    
+    private var userStoryList = UserWithStory.dummyData()
+    private var storyList = Story.dummyData()
+    
+    private var pageViewControllerData: [StoryContentViewController] = []
     
     // MARK: - UI Property
     
@@ -40,16 +46,32 @@ final class StoryPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        setDelegate()
+        setPageViewControllerData()
+        setPageViewController()
     }
     
     // MARK: - Setting
     
-    private func setPageViewController() {
-        
+    private func setDelegate() {
+        self.delegate = self
+        self.dataSource = self
     }
     
-    private func setAllMembersStory() {
+    private func setPageViewController() {
+        let currentViewController = pageViewControllerData[currentUserIndex]
+        self.setViewControllers([currentViewController], direction: .forward, animated: true)
+        self.didMove(toParent: self)
+    }
+    
+    private func setPageViewControllerData() {
+        for i in 0..<userStoryList.count {
+            let storyViewController = StoryContentViewController(userId: userStoryList[i].memberID, storyCount: storyList[i].count)
+            pageViewControllerData.append(storyViewController)
+        }
+    }
+    
+    func setAllMembersStory() {
         
     }
     
@@ -59,7 +81,27 @@ final class StoryPageViewController: UIPageViewController {
     
     // MARK: - Custom Method
     
+    func moveToNextUser() {
+        currentUserIndex += 1
+        if currentUserIndex < userStoryList.count {
+            let nextViewController = pageViewControllerData[currentUserIndex]
+            self.setViewControllers([nextViewController], direction: .forward, animated: true)
+        } else {
+            // TODO: PageViewController 닫기
+            print("removed PageViewController")
+        }
+    }
     
+    func moveToPreviousUser() {
+        currentUserIndex -= 1
+        if currentUserIndex > 0 {
+            let previousViewController = pageViewControllerData[currentUserIndex]
+            self.setViewControllers([previousViewController], direction: .reverse, animated: true)
+        } else {
+            // TODO: PageViewController 닫기
+            print("removed PageViewController")
+        }
+    }
     
     // MARK: - API
     
@@ -73,6 +115,30 @@ final class StoryPageViewController: UIPageViewController {
     
     private func fetchSingleMemberStory() {
         // TODO: 개인의 스토리 받아오기
+    }
+    
+    
+}
+
+
+// MARK: - UIPageViewControllerDelegate extension
+
+extension StoryPageViewController: UIPageViewControllerDelegate {}
+
+
+// MARK: - UIPageViewControllerDataSource extension
+
+extension StoryPageViewController: UIPageViewControllerDataSource {
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return 4
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        return pageViewControllerData[currentUserIndex - 1]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        return pageViewControllerData[currentUserIndex + 1]
     }
     
     

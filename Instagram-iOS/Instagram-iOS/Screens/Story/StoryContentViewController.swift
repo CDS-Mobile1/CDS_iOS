@@ -9,6 +9,10 @@ import UIKit
 
 import SnapKit
 
+// FIXME: delegate pattern 을 쓸 수는 없을까 ?
+// 만약 쓴다면, StoryPageViewController 에서 page data 설정할 때
+// 모든 VC 마다 delegate 를 설정해줘야 하는데, 이게 괜찮을까?
+
 final class StoryContentViewController: BaseViewController {
     
     // MARK: - Property
@@ -130,6 +134,8 @@ final class StoryContentViewController: BaseViewController {
         self.storyCount = storyCount
         
         super.init(nibName: nil, bundle: nil)
+        
+        print("init", userId)
     }
     
     @available(*, unavailable)
@@ -255,10 +261,12 @@ final class StoryContentViewController: BaseViewController {
         if currentStoryIndex >= 0, currentStoryIndex < storyCount {
             configureProgressBars()
             // TODO: change image to next story
-        } else if currentStoryIndex < 0 {
-            print("previous user")
         } else if currentStoryIndex >= storyCount {
             print("next user")
+            moveToNextUserStory()
+        } else if currentStoryIndex < 0 {
+            print("previous user")
+            moveToPreviousUserStory()
         }
     }
     
@@ -269,6 +277,16 @@ final class StoryContentViewController: BaseViewController {
         if currentStoryIndex < storyCount - 1 {
             progressBars[currentStoryIndex + 1].setProgress(0, animated: false)
         }
+    }
+    
+    private func moveToNextUserStory() {
+        guard let superView = self.parent as? StoryPageViewController else { return }
+        superView.moveToNextUser()
+    }
+    
+    private func moveToPreviousUserStory() {
+        guard let superView = self.parent as? StoryPageViewController else { return }
+        superView.moveToPreviousUser()
     }
     
     // MARK: - API
