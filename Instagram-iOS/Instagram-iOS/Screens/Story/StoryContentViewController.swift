@@ -21,9 +21,9 @@ final class StoryContentViewController: BaseViewController {
     
     let storyCount: Int
     
-    var currentStoryIndex: Int = 0 {
+    var storyIndex: Int = 0 {
         didSet {
-            configureCurrentIndexStory()
+            configureCurrentUserStory()
         }
     }
     
@@ -157,6 +157,22 @@ final class StoryContentViewController: BaseViewController {
         configureProgressBars()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if storyIndex == storyCount {
+            storyIndex = 0
+        } else if storyIndex < 0 {
+            storyIndex = 0
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        initProgressBars()
+    }
+    
     // MARK: - Setting
     
     override func setLayout() {
@@ -215,7 +231,7 @@ final class StoryContentViewController: BaseViewController {
     }
     
     override func setStyle() {
-        view.backgroundColor = .black
+//        view.backgroundColor = .black
     }
     
     private func setProgressBarStackView(to count: Int) {
@@ -234,9 +250,11 @@ final class StoryContentViewController: BaseViewController {
     private func storyTapped(_ sender: UITapGestureRecognizer) {
         let touchPos = sender.location(ofTouch: 0, in: view)
         if touchPos.x < SizeLiteral.Screen.width / 3 {
-            currentStoryIndex -= currentStoryIndex == storyCount ? 0 : 1
+            storyIndex -= storyIndex >= 0 ? 1 : 0
+            print("storyTappedLeft", storyCount, storyIndex)
         } else {
-            currentStoryIndex += 1
+            storyIndex += storyIndex <= storyCount ? 1 : 0
+            print("storyTappedRight", storyCount, storyIndex)
         }
     }
     
@@ -255,15 +273,23 @@ final class StoryContentViewController: BaseViewController {
     
     // MARK: - Custom Method
     
-    private func configureCurrentIndexStory() {
+    func initProgressBars() {
+        progressBarStackView.arrangedSubviews.forEach { bar in
+            guard let progressBar = bar as? UIProgressView
+            else { return }
+            progressBar.setProgress(0, animated: false)
+        }
+    }
+    
+    private func configureCurrentUserStory() {
         guard let parent = self.parent as? StoryPageViewController
         else { return }
-        if currentStoryIndex >= 0, currentStoryIndex < storyCount {
-            // MARK: tap gesture 로 추가해둬서 다른 action 필요 없음
+        if storyIndex >= 0, storyIndex < storyCount {
             configureProgressBars()
-        } else if currentStoryIndex >= storyCount {
+            // TODO: 스토리 이미지 변경
+        } else if storyIndex >= storyCount {
             parent.moveToNextUserStory()
-        } else if currentStoryIndex < 0 {
+        } else if storyIndex < 0 {
             parent.moveToPreviousUserStory()
         }
     }
@@ -271,10 +297,14 @@ final class StoryContentViewController: BaseViewController {
     private func configureProgressBars() {
         guard let progressBars = progressBarStackView.arrangedSubviews as? [UIProgressView]
         else { return }
-        print(storyCount, currentStoryIndex)
-        progressBars[currentStoryIndex].setProgress(1, animated: false)
-        if currentStoryIndex < storyCount - 1 {
-            progressBars[currentStoryIndex + 1].setProgress(0, animated: false)
+        print("configureProgressBars", storyCount, storyIndex)
+        if storyIndex < storyCount {
+            for i in 0...storyIndex {
+                progressBars[i].setProgress(1, animated: false)
+            }
+        }
+        if storyIndex < storyCount - 1 {
+            progressBars[storyIndex + 1].setProgress(0, animated: false)
         }
     }
     

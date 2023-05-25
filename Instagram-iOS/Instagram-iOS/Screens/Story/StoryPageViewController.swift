@@ -131,18 +131,32 @@ extension StoryPageViewController: UIPageViewControllerDataSource {
         return userStoryList.count
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let vc = viewController as? StoryContentViewController,
-              let currentIndex = pageViewControllerData.firstIndex(of: vc)
-        else { return nil }
-        return pageViewControllerData[currentIndex - 1]
-    }
-    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let vc = viewController as? StoryContentViewController,
               let currentIndex = pageViewControllerData.firstIndex(of: vc)
         else { return nil }
+        if currentIndex == userCount - 1 {
+            return nil
+        }
         return pageViewControllerData[currentIndex + 1]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let vc = viewController as? StoryContentViewController,
+              let currentIndex = pageViewControllerData.firstIndex(of: vc)
+        else { return nil }
+        if currentIndex == 0 {
+            return nil
+        }
+        return pageViewControllerData[currentIndex - 1]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed {
+            guard let content = previousViewControllers.last as? StoryContentViewController
+            else { return }
+            content.initProgressBars()
+        }
     }
     
 }
