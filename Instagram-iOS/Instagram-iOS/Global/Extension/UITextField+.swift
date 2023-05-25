@@ -46,5 +46,13 @@ extension UITextField {
             rightViewMode = .always
         }
     }
+    
+    func setAttributedPlaceholder(of string: String, with color: UIColor) {
+        let attributedText = NSAttributedString(
+            string: string,
+            attributes: [.foregroundColor: color]
+        )
+        self.attributedPlaceholder = attributedText
+    }
 }
 
