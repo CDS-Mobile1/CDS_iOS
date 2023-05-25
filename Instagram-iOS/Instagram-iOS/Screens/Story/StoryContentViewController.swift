@@ -134,8 +134,6 @@ final class StoryContentViewController: BaseViewController {
         self.storyCount = storyCount
         
         super.init(nibName: nil, bundle: nil)
-        
-        print("init", userId)
     }
     
     @available(*, unavailable)
@@ -236,7 +234,7 @@ final class StoryContentViewController: BaseViewController {
     private func storyTapped(_ sender: UITapGestureRecognizer) {
         let touchPos = sender.location(ofTouch: 0, in: view)
         if touchPos.x < SizeLiteral.Screen.width / 3 {
-            currentStoryIndex -= 1
+            currentStoryIndex -= currentStoryIndex == storyCount ? 0 : 1
         } else {
             currentStoryIndex += 1
         }
@@ -258,35 +256,26 @@ final class StoryContentViewController: BaseViewController {
     // MARK: - Custom Method
     
     private func configureCurrentIndexStory() {
+        guard let parent = self.parent as? StoryPageViewController
+        else { return }
         if currentStoryIndex >= 0, currentStoryIndex < storyCount {
+            // MARK: tap gesture 로 추가해둬서 다른 action 필요 없음
             configureProgressBars()
-            // TODO: change image to next story
         } else if currentStoryIndex >= storyCount {
-            print("next user")
-            moveToNextUserStory()
+            parent.moveToNextUserStory()
         } else if currentStoryIndex < 0 {
-            print("previous user")
-            moveToPreviousUserStory()
+            parent.moveToPreviousUserStory()
         }
     }
     
     private func configureProgressBars() {
         guard let progressBars = progressBarStackView.arrangedSubviews as? [UIProgressView]
         else { return }
+        print(storyCount, currentStoryIndex)
         progressBars[currentStoryIndex].setProgress(1, animated: false)
         if currentStoryIndex < storyCount - 1 {
             progressBars[currentStoryIndex + 1].setProgress(0, animated: false)
         }
-    }
-    
-    private func moveToNextUserStory() {
-        guard let superView = self.parent as? StoryPageViewController else { return }
-        superView.moveToNextUser()
-    }
-    
-    private func moveToPreviousUserStory() {
-        guard let superView = self.parent as? StoryPageViewController else { return }
-        superView.moveToPreviousUser()
     }
     
     // MARK: - API

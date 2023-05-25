@@ -22,6 +22,7 @@ final class StoryPageViewController: UIPageViewController {
     
     // TODO: MainFeed 에서 몇 번째 스토리를 누르냐에 따라 달라짐
     private var currentUserIndex = 0
+    private lazy var userCount = storyList.count
     
     private var userStoryList = UserWithStory.dummyData()
     private var storyList = Story.dummyData()
@@ -36,7 +37,6 @@ final class StoryPageViewController: UIPageViewController {
     
     override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
-        print("init")
     }
     
     @available(*, unavailable)
@@ -87,28 +87,18 @@ final class StoryPageViewController: UIPageViewController {
     
     // MARK: - Custom Method
     
-    func moveToNextUser() {
-        currentUserIndex += 1
-        if currentUserIndex < userStoryList.count {
-            let nextViewController = pageViewControllerData[currentUserIndex]
-            self.setViewControllers([nextViewController], direction: .forward, animated: true)
-        } else {
-            // TODO: PageViewController 닫기
-            print("removed PageViewController")
-            navigationController?.popViewController(animated: false)
-        }
+    func moveToNextUserStory() {
+        guard let currentViewController = viewControllers?.first,
+              let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController)
+        else { return }
+        setViewControllers([nextViewController], direction: .forward, animated: true)
     }
     
-    func moveToPreviousUser() {
-        currentUserIndex -= 1
-        if currentUserIndex > 0 {
-            let previousViewController = pageViewControllerData[currentUserIndex]
-            self.setViewControllers([previousViewController], direction: .reverse, animated: true)
-        } else {
-            // TODO: PageViewController 닫기
-            print("removed PageViewController")
-            navigationController?.popViewController(animated: false)
-        }
+    func moveToPreviousUserStory() {
+        guard let currentViewController = viewControllers?.first,
+              let previousViewController = dataSource?.pageViewController(self, viewControllerBefore: currentViewController)
+        else { return }
+        setViewControllers([previousViewController], direction: .reverse, animated: true)
     }
     
     // MARK: - API
@@ -136,18 +126,23 @@ extension StoryPageViewController: UIPageViewControllerDelegate {}
 // MARK: - UIPageViewControllerDataSource extension
 
 extension StoryPageViewController: UIPageViewControllerDataSource {
+    
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return userStoryList.count
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        let vc = pageViewControllerData[currentUserIndex - 1]
-        return vc
+        guard let vc = viewController as? StoryContentViewController,
+              let currentIndex = pageViewControllerData.firstIndex(of: vc)
+        else { return nil }
+        return pageViewControllerData[currentIndex - 1]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return pageViewControllerData[currentUserIndex + 1]
+        guard let vc = viewController as? StoryContentViewController,
+              let currentIndex = pageViewControllerData.firstIndex(of: vc)
+        else { return nil }
+        return pageViewControllerData[currentIndex + 1]
     }
-    
     
 }

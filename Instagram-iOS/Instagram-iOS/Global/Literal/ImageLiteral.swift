@@ -25,7 +25,7 @@ enum ImageLiteral {
             static let search = UIImage.load(name: "searchDm")
         }
         
-        static let back = UIImage.load(name: "back")
+        static let back = UIImage.load(name: "Back")
     }
     
     enum TabBar {
