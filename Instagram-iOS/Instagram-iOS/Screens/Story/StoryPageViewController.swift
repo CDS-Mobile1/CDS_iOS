@@ -133,6 +133,7 @@ extension StoryPageViewController: UIPageViewControllerDataSource {
               let currentIndex = pageViewControllerData.firstIndex(of: vc)
         else { return nil }
         if currentIndex == userCount - 1 {
+            navigationController?.popViewController(animated: false)
             return nil
         }
         return pageViewControllerData[currentIndex + 1]
@@ -143,6 +144,7 @@ extension StoryPageViewController: UIPageViewControllerDataSource {
               let currentIndex = pageViewControllerData.firstIndex(of: vc)
         else { return nil }
         if currentIndex == 0 {
+            navigationController?.popViewController(animated: false)
             return nil
         }
         return pageViewControllerData[currentIndex - 1]
