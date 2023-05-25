@@ -36,6 +36,7 @@ final class StoryPageViewController: UIPageViewController {
     
     override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        print("init")
     }
     
     @available(*, unavailable)
@@ -49,6 +50,11 @@ final class StoryPageViewController: UIPageViewController {
         setDelegate()
         setPageViewControllerData()
         setPageViewController()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     // MARK: - Setting
@@ -89,6 +95,7 @@ final class StoryPageViewController: UIPageViewController {
         } else {
             // TODO: PageViewController 닫기
             print("removed PageViewController")
+            navigationController?.popViewController(animated: false)
         }
     }
     
@@ -100,6 +107,7 @@ final class StoryPageViewController: UIPageViewController {
         } else {
             // TODO: PageViewController 닫기
             print("removed PageViewController")
+            navigationController?.popViewController(animated: false)
         }
     }
     
@@ -117,7 +125,6 @@ final class StoryPageViewController: UIPageViewController {
         // TODO: 개인의 스토리 받아오기
     }
     
-    
 }
 
 
@@ -130,11 +137,12 @@ extension StoryPageViewController: UIPageViewControllerDelegate {}
 
 extension StoryPageViewController: UIPageViewControllerDataSource {
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return 4
+        return userStoryList.count
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return pageViewControllerData[currentUserIndex - 1]
+        let vc = pageViewControllerData[currentUserIndex - 1]
+        return vc
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
