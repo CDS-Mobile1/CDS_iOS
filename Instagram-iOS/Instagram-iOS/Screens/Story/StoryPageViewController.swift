@@ -20,18 +20,18 @@ final class StoryPageViewController: UIPageViewController {
     
     // MARK: - Property
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // TODO: MainFeed 에서 몇 번째 스토리를 누르냐에 따라 달라짐
-    private var currentUserIndex = 0
+    var currentUserIndex = 0
     private lazy var userCount = storyList.count
     
     private var userStoryList = UserWithStory.dummyData()
     private var storyList = Story.dummyData()
     
     private var pageViewControllerData: [StoryContentViewController] = []
-    
-    // MARK: - UI Property
-    
-    
     
     // MARK: - Life Cycle
     
@@ -78,11 +78,8 @@ final class StoryPageViewController: UIPageViewController {
     }
     
     func setAllMembersStory() {
-        
+        // TODO: API 받아오면 여기서 데이터들 설정하기
     }
-    
-    // MARK: - Action Helper
-    
     
     
     // MARK: - Custom Method

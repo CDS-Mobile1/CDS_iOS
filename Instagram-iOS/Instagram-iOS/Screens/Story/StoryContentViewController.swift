@@ -30,7 +30,7 @@ final class StoryContentViewController: BaseViewController {
     // MARK: - UI Property
     
     private lazy var storyImageView: UIImageView = {
-        let imageView = UIImageView(image: ImageLiteral.Common.rightChevron)
+        let imageView = UIImageView(image: ImageLiteral.Common.defaultImage)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(storyTapped(_:)))
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFill
@@ -231,7 +231,7 @@ final class StoryContentViewController: BaseViewController {
     }
     
     override func setStyle() {
-//        view.backgroundColor = .black
+        view.backgroundColor = .black1
     }
     
     private func setProgressBarStackView(to count: Int) {
