@@ -9,7 +9,18 @@ import UIKit
 import SnapKit
 
 class MainFeedViewController: BaseViewController {
-   
+    // MARK: - Property
+    
+    let dummyData: [UIImage] = [
+        
+        ImageLiteral.Common.defaultImage,
+        ImageLiteral.Common.defaultImage,
+        ImageLiteral.Common.defaultImage,
+        ImageLiteral.Common.defaultImage,
+        ImageLiteral.Common.defaultImage,
+        
+    ]
+
     // MARK: - UI Property
     
     private let mainCollectionTableView: UITableView = {
@@ -19,6 +30,12 @@ class MainFeedViewController: BaseViewController {
         storyView.frame = .init(x: 0, y: 0, width: SizeLiteral.Screen.width, height: 115)
 //        tableView.separatorStyle = .none
         tableView.tableHeaderView = storyView
+        
+        if #available(iOS 15.0, *) {
+            tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
+        } else {
+            // Fallback on earlier versions
+        }
         return tableView
     }()
     
@@ -93,13 +110,47 @@ extension MainFeedViewController: UITableViewDelegate {
 // MARK: - UITableView DataSource
 
 extension MainFeedViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return dummyData.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        switch section {
+        case 0: return 1
+        default: return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if #available(iOS 15.0, *) {
+            guard let postTableViewCell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as? PostTableViewCell
+            else { return UITableViewCell() }
+            
+            postTableViewCell.selectionStyle = .none
+            
+            postTableViewCell.prepareCells(with: dummyData)
+            return postTableViewCell
+        } else {
+            // Fallback on earlier versions
+        }
+        
         return UITableViewCell()
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let subSection = indexPath.section % 4
+        switch subSection {
+        case 0: if #available(iOS 15.0, *) {
+            return CGFloat(PostTableViewCell.cellHeight)
+        } else {
+            // Fallback on earlier versions
+        }
+        default: return .zero
+        }
+        return .zero
+    }
 }
+
+
