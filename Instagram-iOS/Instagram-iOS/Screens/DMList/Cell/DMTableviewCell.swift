@@ -31,7 +31,7 @@ final class DMTableviewCell: BaseTableViewCell {
     
     private let textMessageLabel: UILabel = {
         let label = UILabel()
-        label.text = "hanyee"
+        label.text = "디엠디엠디엠"
         label.font = .detail2kor
         label.textColor = .gray2
         return label
@@ -51,6 +51,7 @@ final class DMTableviewCell: BaseTableViewCell {
         userProfileView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(14)
+            $0.width.height.equalTo(58)
         }
         
         addSubview(usernameLabel)
@@ -61,7 +62,7 @@ final class DMTableviewCell: BaseTableViewCell {
         
         addSubview(textMessageLabel)
         textMessageLabel.snp.makeConstraints {
-            $0.top.equalTo(usernameLabel).offset(2)
+            $0.top.equalTo(usernameLabel.snp.bottom).offset(2)
             $0.leading.equalTo(usernameLabel)
         }
         
