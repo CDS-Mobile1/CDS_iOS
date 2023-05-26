@@ -18,23 +18,6 @@ class StoryCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
-    
-//    private let profileButton: UIButton = {
-//        let button = UIButton()
-//        button.setImage(ImageLiteral.Common.defaultImage, for: .normal)
-//        button.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
-//        button.layer.cornerRadius = 0.5 * button.bounds.size.width
-//        button.clipsToBounds = true
-//        return button
-//    }()
-//
-//    private let nameLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "UserName"
-//        label.font = .detail2kor
-//        return label
-//    }()
-    
     // MARK: - Life Cycle
     
     override init(frame: CGRect) {

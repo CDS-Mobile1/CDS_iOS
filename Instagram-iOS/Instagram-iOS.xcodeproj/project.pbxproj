@@ -26,6 +26,7 @@
 		3E9683EC2A1654CF00D6DD30 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9683EB2A1654CF00D6DD30 /* UIViewController+.swift */; };
 		3E9683EE2A16562700D6DD30 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9683ED2A16562700D6DD30 /* UIView+.swift */; };
 		3E9683F02A1656A800D6DD30 /* SizeLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9683EF2A1656A800D6DD30 /* SizeLiteral.swift */; };
+		7E0148BB2A1890530036147D /* MainFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0148BA2A1890530036147D /* MainFeedViewController.swift */; };
 		3EEE765F2A1678E800D0B80E /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE765E2A1678E800D0B80E /* UserProfileView.swift */; };
 		3EEE76612A1757D400D0B80E /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE76602A1757D400D0B80E /* NewPostViewController.swift */; };
 		3EEE76632A175ECD00D0B80E /* BottomMenuContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE76622A175ECD00D0B80E /* BottomMenuContentView.swift */; };
@@ -71,6 +72,7 @@
 		3E9683EB2A1654CF00D6DD30 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		3E9683ED2A16562700D6DD30 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		3E9683EF2A1656A800D6DD30 /* SizeLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiteral.swift; sourceTree = "<group>"; };
+		7E0148BA2A1890530036147D /* MainFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedViewController.swift; sourceTree = "<group>"; };
 		3EEE765E2A1678E800D0B80E /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		3EEE76602A1757D400D0B80E /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		3EEE76622A175ECD00D0B80E /* BottomMenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuContentView.swift; sourceTree = "<group>"; };
@@ -457,8 +459,9 @@
 				3E6CF47C2A14F63700DC3B2B /* BaseTableViewCell.swift in Sources */,
 				3E9683F02A1656A800D6DD30 /* SizeLiteral.swift in Sources */,
 				3E9683EE2A16562700D6DD30 /* UIView+.swift in Sources */,
-				3EEE765F2A1678E800D0B80E /* UserProfileView.swift in Sources */,
+				7E8DF5AE2A1238F80023948F /* MainFeed.swift in Sources */,
 				7E0148BB2A1890530036147D /* MainFeedViewController.swift in Sources */,
+				3EEE765F2A1678E800D0B80E /* UserProfileView.swift in Sources */,
 				3E6CF47A2A14F43500DC3B2B /* BaseViewController.swift in Sources */,
 				3E9683E42A16319A00D6DD30 /* UIColor+.swift in Sources */,
 				7E0148C02A1BEA9A0036147D /* StoryCollectionViewCell.swift in Sources */,

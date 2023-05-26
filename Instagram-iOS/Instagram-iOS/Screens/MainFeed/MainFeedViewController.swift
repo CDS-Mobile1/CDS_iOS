@@ -28,7 +28,6 @@ class MainFeedViewController: BaseViewController {
         
         let storyView = StoryCollectionView()
         storyView.frame = .init(x: 0, y: 0, width: SizeLiteral.Screen.width, height: 115)
-//        tableView.separatorStyle = .none
         tableView.tableHeaderView = storyView
         
         if #available(iOS 15.0, *) {
@@ -96,15 +95,12 @@ class MainFeedViewController: BaseViewController {
             $0.horizontalEdges.bottom.equalToSuperview()
         }
     }
-
 }
 
 
 // MARK: - UITableView Delegate
 
-extension MainFeedViewController: UITableViewDelegate {
-    
-}
+extension MainFeedViewController: UITableViewDelegate {}
 
 
 // MARK: - UITableView DataSource
@@ -137,19 +133,6 @@ extension MainFeedViewController: UITableViewDataSource {
         }
         
         return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let subSection = indexPath.section % 4
-        switch subSection {
-        case 0: if #available(iOS 15.0, *) {
-            return CGFloat(PostTableViewCell.cellHeight)
-        } else {
-            // Fallback on earlier versions
-        }
-        default: return .zero
-        }
-        return .zero
     }
 }
 
