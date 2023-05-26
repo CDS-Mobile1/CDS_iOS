@@ -14,6 +14,7 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setBackgroundColor()
         setNavigationBar()
         setDelegate()
         setLayout()
@@ -21,6 +22,10 @@ class BaseViewController: UIViewController {
     }
     
     // MARK: - Setting
+    
+    func setBackgroundColor() {
+        view.backgroundColor = .white1
+    }
     
     func setNavigationBar() {
         guard let navigationBar = navigationController?.navigationBar
