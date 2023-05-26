@@ -78,15 +78,12 @@ class MainFeedViewController: BaseViewController {
             $0.horizontalEdges.bottom.equalToSuperview()
         }
     }
-
 }
 
 
 // MARK: - UITableView Delegate
 
-extension MainFeedViewController: UITableViewDelegate {
-    
-}
+extension MainFeedViewController: UITableViewDelegate {}
 
 
 // MARK: - UITableView DataSource
@@ -99,6 +96,4 @@ extension MainFeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
-    
-    
 }
