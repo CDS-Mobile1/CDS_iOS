@@ -2,7 +2,7 @@
 //  DMList.swift
 //  Instagram-iOS
 //
-//  Created by 김사랑 on 2023/05/15.
+//  Created by 백준 on 2023/05/15.
 //
 
 import UIKit
@@ -13,7 +13,29 @@ final class DMListViewController: BaseViewController {
     
     // MARK: - Property
     
+    ㅅ
+    
     // MARK: - UI Property
+    
+    let userNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = .title1
+        label.textColor = .black1
+        label.text = "gosopt_cds_app1"
+        return label
+    }()
+    
+    let arrowDownButton = UIButton()
+    
+    let videoCallButton = UIButton()
+    
+    let newMessageButton = UIButton()
+    
+    let backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(ImageLiteral.NavBar.DMList.arrowBack, for: .normal)
+        return button
+    }()
     
     let customNaviView = UIView()
     
@@ -21,9 +43,12 @@ final class DMListViewController: BaseViewController {
         let textField = UITextField()
         textField.backgroundColor = .gray5
         textField.font = .body
-        textField.placeholder = "검색"
+        //TODO: - 추후 placeholder 세팅 시 추가하겠습니다
+//        textField.placeholder = "검색"
         return textField
     }()
+    
+    
     
     // MARK: - Life Cycle
     
@@ -31,44 +56,27 @@ final class DMListViewController: BaseViewController {
         super.viewDidLoad()
         
         setSearchTextFieldUI()
-    }
+        }
     
-    // MARK: - Setting
+// MARK: - Setting
     
     override func setNavigationBar() {
         super.setNavigationBar()
         
-        let backButton = UIButton()
-            backButton.setImage(ImageLiteral.NavBar.DMList.arrowBack, for: .normal)
-        
         let backButtonItem = UIBarButtonItem(customView: backButton)
-        
-        let userNameLabel: UILabel = {
-            let label = UILabel()
-            label.font = .title1
-            label.textColor = .black1
-            label.text = "gosopt_cds_app1"
-            return label
-        }()
         
         let userNameLabelItem = UIBarButtonItem(customView: userNameLabel)
         
-        let arrowButton = UIButton()
-        arrowButton.setImage(ImageLiteral.NavBar.DMList.arrowBottom, for: .normal)
-        
-        let arrowButtonItem = UIBarButtonItem(customView: arrowButton)
-        
-        let videoCallButton = UIButton()
-        videoCallButton.setImage(ImageLiteral.NavBar.DMList.camera, for: .normal)
+        let arrowDownButtonItem = UIBarButtonItem(customView: arrowDownButton)
         
         let videoCallButtonItem = UIBarButtonItem(customView: videoCallButton)
         
-        let newMessageButton = UIButton()
-        newMessageButton.setImage(ImageLiteral.NavBar.DMList.newDM, for: .normal)
-        
         let newMessageButtonItem = UIBarButtonItem(customView: newMessageButton)
         
-        navigationItem.leftBarButtonItems = [backButtonItem, userNameLabelItem, arrowButtonItem]
+        arrowDownButton.setImage(ImageLiteral.NavBar.DMList.arrowBottom, for: .normal)
+        videoCallButton.setImage(ImageLiteral.NavBar.DMList.camera, for: .normal)
+        newMessageButton.setImage(ImageLiteral.NavBar.DMList.newDM, for: .normal)
+        navigationItem.leftBarButtonItems = [backButtonItem, userNameLabelItem, arrowDownButtonItem]
         navigationItem.rightBarButtonItems = [videoCallButtonItem, newMessageButtonItem]
     }
     
@@ -89,21 +97,16 @@ final class DMListViewController: BaseViewController {
         }
     }
         
-        // MARK: - Action Helper
+// MARK: - Action Helper
         
-        // MARK: - Custom Method
+// MARK: - Custom Method
         
     private func setSearchTextFieldUI() {
-//        let searchImageView = UIImageView(image: ImageLiteral.NavBar.DMList.search)
-//        searchImageView.frame = CGRect(x: 0, y: 0, width: 10, height: searchTextField.frame.height)
-
-//        searchTextField.leftView = searchImageView
-//        searchTextField.leftViewMode = .always
         
         searchTextField.layer.cornerRadius = 10
         searchTextField.backgroundColor = .gray5
         searchTextField.font = .body
-        searchTextField.attributedPlaceholder = NSAttributedString(string: "검색", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+//        searchTextField.attributedPlaceholder = NSAttributedString(string: "검색", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
     }
 }
