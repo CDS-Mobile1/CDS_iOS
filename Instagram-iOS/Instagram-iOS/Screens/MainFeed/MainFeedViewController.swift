@@ -17,7 +17,6 @@ class MainFeedViewController: BaseViewController {
         
         let storyView = StoryCollectionView()
         storyView.frame = .init(x: 0, y: 0, width: SizeLiteral.Screen.width, height: 115)
-//        tableView.separatorStyle = .none
         tableView.tableHeaderView = storyView
         return tableView
     }()
