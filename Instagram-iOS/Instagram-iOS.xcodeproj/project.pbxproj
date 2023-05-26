@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		372AAF732A20E7FC009212A8 /* DMTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372AAF722A20E7FC009212A8 /* DMTableviewCell.swift */; };
 		372AAF752A20E808009212A8 /* DMCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372AAF742A20E808009212A8 /* DMCollectionViewCell.swift */; };
+		372AAF772A20F90F009212A8 /* DMTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372AAF762A20F90F009212A8 /* DMTableViewHeader.swift */; };
 		37C4BF062A1D3E86006FBFF6 /* SF-Pro-Text-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37C4BF052A1D3E86006FBFF6 /* SF-Pro-Text-Bold.ttf */; };
 		3E6CF47A2A14F43500DC3B2B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CF4792A14F43500DC3B2B /* BaseViewController.swift */; };
 		3E6CF47C2A14F63700DC3B2B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CF47B2A14F63700DC3B2B /* BaseTableViewCell.swift */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		372AAF722A20E7FC009212A8 /* DMTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTableviewCell.swift; sourceTree = "<group>"; };
 		372AAF742A20E808009212A8 /* DMCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCollectionViewCell.swift; sourceTree = "<group>"; };
+		372AAF762A20F90F009212A8 /* DMTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTableViewHeader.swift; sourceTree = "<group>"; };
 		37C4BF052A1D3E86006FBFF6 /* SF-Pro-Text-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.ttf"; sourceTree = "<group>"; };
 		37D49A6D2A17CE5C00FBCA0F /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		37D49A6F2A18891600FBCA0F /* UITextfield+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+.swift"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			children = (
 				372AAF722A20E7FC009212A8 /* DMTableviewCell.swift */,
 				372AAF742A20E808009212A8 /* DMCollectionViewCell.swift */,
+				372AAF762A20F90F009212A8 /* DMTableViewHeader.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				7E0148C02A1BEA9A0036147D /* StoryCollectionViewCell.swift in Sources */,
 				3E9683E62A16392900D6DD30 /* ImageLiteral.swift in Sources */,
 				3EEE76682A176C9100D0B80E /* NewPostImageCollectionViewCell.swift in Sources */,
+				372AAF772A20F90F009212A8 /* DMTableViewHeader.swift in Sources */,
 				7E8DF5A02A1238840023948F /* Models.swift in Sources */,
 				7E0148BE2A1BE8780036147D /* StoryCollectionView.swift in Sources */,
 				3E6CF47E2A14F84500DC3B2B /* BaseCollectionViewCell.swift in Sources */,
