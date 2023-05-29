@@ -37,10 +37,18 @@ final class DMListViewController: BaseViewController {
     
     let customNaviView = UIView()
     
+//    private let searchTextField: UITextField = {
+//        let textField = UITextField()
+//        textField.backgroundColor = .gray5
+//        textField.font = .body
+//        //TODO: - 추후 placeholder 세팅 시 추가하겠습니다
+////        textField.placeholder = "검색"
+//        return textField
+//    }()
+    
     private let DMListTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(DMTableviewCell.self, forCellReuseIdentifier: DMTableviewCell.identifier)
-        tableView.register(DMTableViewHeader.self, forHeaderFooterViewReuseIdentifier: DMTableViewHeader.identifier)
         return tableView
     }()
     
@@ -49,10 +57,11 @@ final class DMListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        setSearchTextFieldUI()
         configDelegate()
-    }
+        }
     
-    // MARK: - Setting
+// MARK: - Setting
     
     private func configDelegate() {
         DMListTableView.delegate = self
@@ -87,35 +96,43 @@ final class DMListViewController: BaseViewController {
             $0.leading.trailing.equalToSuperview()
         }
         
+//        view.addSubview(searchTextField)
+//        searchTextField.snp.makeConstraints {
+//            $0.top.equalTo(customNaviView.snp.bottom).offset(8)
+//            $0.centerX.equalToSuperview()
+//            $0.leading.equalToSuperview().offset(16)
+//            $0.height.equalTo(35)
+//        }
+        
         view.addSubview(DMListTableView)
         DMListTableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
+        
+// MARK: - Action Helper
+        
+// MARK: - Custom Method
+        
+//    private func setSearchTextFieldUI() {
+//
+//        searchTextField.layer.cornerRadius = 10
+//        searchTextField.backgroundColor = .gray5
+//        searchTextField.font = .body
+////        searchTextField.attributedPlaceholder = NSAttributedString(string: "검색", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+//
+//    }
 }
 
 //MARK: - UITableViewDelegate
 extension DMListViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 82 + 90 + 22
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: DMTableViewHeader.identifier) as! DMTableViewHeader
-        return headerView
-    }
 }
 
 //MARK: - UITableViewDataSource
 extension DMListViewController: UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2 // set your desired number of sections
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 // set your desired number of rows per section
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -124,7 +141,8 @@ extension DMListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 74 // set your desired row height
+        return 74
     }
+    
+    
 }
-
