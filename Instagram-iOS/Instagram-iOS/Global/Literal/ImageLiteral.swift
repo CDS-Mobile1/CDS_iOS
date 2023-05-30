@@ -79,6 +79,12 @@ enum ImageLiteral {
         static let save = UIImage.load(name: "save")
     }
     
+    enum Recommend {
+        static let castle = UIImage.load(name: "castle")
+        static let sung = UIImage.load(name: "sung")
+        static let kim = UIImage.load(name: "kim")
+    }
+    
 }
 
 extension UIImage {
