@@ -36,12 +36,14 @@ class TabBarViewController: UITabBarController {
             return vc
         }()
         
-        let searchTabBarItem = UITabBarItem(title: nil, image: searchVC.image, selectedImage: nil)
+        let searchTabBarItem = UITabBarItem(title: nil, image: searchVC.image, selectedImage: ImageLiteral.TabBar.searchFilled)
         let reelsTabBarItem = UITabBarItem(title: nil, image: reelsVC.image, selectedImage: nil)
         let profileTabBarItem = UITabBarItem(title: nil, image: profileVC.image, selectedImage: nil)
-        
+
         mainfeedVC.tabBarItem.image = ImageLiteral.TabBar.home
+        mainfeedVC.tabBarItem.selectedImage = ImageLiteral.TabBar.homeFilled
         newpostVC.tabBarItem.image = ImageLiteral.TabBar.newPost
+        newpostVC.tabBarItem.selectedImage = ImageLiteral.TabBar.newPostFilled
         
         let navMainFeed = UINavigationController(rootViewController: mainfeedVC)
         let navSearch = UINavigationController()
@@ -55,7 +57,9 @@ class TabBarViewController: UITabBarController {
         
         setViewControllers([navMainFeed, navSearch, navNewPost, navReels, navProfile], animated: false)
         
-        setTabBarBackgroundColor()
+        tabBar.barTintColor = .white
+        tabBar.isTranslucent = false
+        tabBar.tintColor = .black
     
     }
     
@@ -66,10 +70,11 @@ class TabBarViewController: UITabBarController {
     
     // MARK: - Setting
     
-    func setTabBarBackgroundColor() {
-            tabBar.barTintColor = .white
-            tabBar.isTranslucent = false
-        }
+//    func setTabBarStyle() {
+//        tabBar.barTintColor = .white
+//        tabBar.isTranslucent = false
+//        tabBar.tintColor = .black
+//    }
     
     
     // MARK: - Action Helper

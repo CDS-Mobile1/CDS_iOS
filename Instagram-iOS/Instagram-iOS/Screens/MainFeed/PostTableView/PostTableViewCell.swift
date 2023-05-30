@@ -58,6 +58,7 @@ class PostTableViewCell: BaseTableViewCell {
     private let likeButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageLiteral.Post.likeBlack, for: .normal)
+        button.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -240,6 +241,15 @@ class PostTableViewCell: BaseTableViewCell {
         self.postDummyData = data
     }
     
+    @objc private func likeButtonTapped() {
+        let button = likeButton
+        
+        if button.imageView?.image == ImageLiteral.Post.likeBlackFilled {
+            button.setImage(ImageLiteral.Post.likeBlack, for: .normal)
+        } else {
+            button.setImage(ImageLiteral.Post.likeBlackFilled, for: .normal)
+        }
+    }
 }
 
 

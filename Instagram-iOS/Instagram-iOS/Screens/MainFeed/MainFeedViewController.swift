@@ -107,8 +107,6 @@ class MainFeedViewController: BaseViewController {
         let dmList = DMListViewController()
         navigationController?.pushViewController(dmList, animated: true)
     }
-
-
 }
 
 

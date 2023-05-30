@@ -74,6 +74,7 @@ enum ImageLiteral {
         static let settingMore = UIImage.load(name: "settingMore")
         
         static let likeBlack = UIImage.load(name: "likeBlack")
+        static let likeBlackFilled = UIImage.load(name: "likeBlackFilled")
         static let comment = UIImage.load(name: "comment")
         static let dmBlack = UIImage.load(name: "dmBlack")
         static let save = UIImage.load(name: "save")
