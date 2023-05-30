@@ -8,8 +8,7 @@
 import UIKit
 
 @available(iOS 15.0, *)
-class PostTableViewCell: BaseTableViewCell { //FeedCollection이 하나의 PostTableViewCell로!
-    
+class PostTableViewCell: BaseTableViewCell { 
     // MARK: - Property
     
     private var postDummyData: [UIImage] = []

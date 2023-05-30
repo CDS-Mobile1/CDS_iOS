@@ -38,6 +38,9 @@
 		7E0148C02A1BEA9A0036147D /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0148BF2A1BEA9A0036147D /* StoryCollectionViewCell.swift */; };
 		7E6608572A1DBEBA007F2F8B /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6608562A1DBEBA007F2F8B /* PostTableViewCell.swift */; };
 		7E66085B2A1DD2B3007F2F8B /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E66085A2A1DD2B3007F2F8B /* PostCollectionViewCell.swift */; };
+		7E66085E2A1FBD98007F2F8B /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E66085D2A1FBD98007F2F8B /* RecommendTableViewCell.swift */; };
+		7E6608602A1FBDAD007F2F8B /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E66085F2A1FBDAD007F2F8B /* RecommendCollectionViewCell.swift */; };
+		7E6608622A1FF08F007F2F8B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6608612A1FF08F007F2F8B /* TabBarViewController.swift */; };
 		7E8DF56F2A12306B0023948F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF56E2A12306B0023948F /* AppDelegate.swift */; };
 		7E8DF5712A12306B0023948F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF5702A12306B0023948F /* SceneDelegate.swift */; };
 		7E8DF5782A12306E0023948F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E8DF5772A12306E0023948F /* Assets.xcassets */; };
@@ -84,6 +87,9 @@
 		7E0148BF2A1BEA9A0036147D /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		7E6608562A1DBEBA007F2F8B /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		7E66085A2A1DD2B3007F2F8B /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		7E66085D2A1FBD98007F2F8B /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
+		7E66085F2A1FBDAD007F2F8B /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
+		7E6608612A1FF08F007F2F8B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		7E8DF56B2A12306B0023948F /* Instagram-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instagram-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E8DF56E2A12306B0023948F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E8DF5702A12306B0023948F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +152,8 @@
 		7E66085C2A1FB9B9007F2F8B /* RecommendTableView */ = {
 			isa = PBXGroup;
 			children = (
+				7E66085D2A1FBD98007F2F8B /* RecommendTableViewCell.swift */,
+				7E66085F2A1FBDAD007F2F8B /* RecommendCollectionViewCell.swift */,
 			);
 			path = RecommendTableView;
 			sourceTree = "<group>";
@@ -317,8 +325,9 @@
 		7E8DF5912A1236F30023948F /* MainFeed */ = {
 			isa = PBXGroup;
 			children = (
-				7E66085C2A1FB9B9007F2F8B /* RecommendTableView */,
 				7E0148BA2A1890530036147D /* MainFeedViewController.swift */,
+				7E6608612A1FF08F007F2F8B /* TabBarViewController.swift */,
+				7E66085C2A1FB9B9007F2F8B /* RecommendTableView */,
 				7E6608552A1DBE57007F2F8B /* PostTableView */,
 				7E0148BC2A1BE8580036147D /* StoryCollection */,
 			);
@@ -473,14 +482,17 @@
 				7E6608572A1DBEBA007F2F8B /* PostTableViewCell.swift in Sources */,
 				3E9683E82A16456500D6DD30 /* UIFont+.swift in Sources */,
 				3EEE76632A175ECD00D0B80E /* BottomMenuContentView.swift in Sources */,
+				7E66085E2A1FBD98007F2F8B /* RecommendTableViewCell.swift in Sources */,
 				7E8DF5AA2A1238C50023948F /* UIComponent.swift in Sources */,
 				7E8DF56F2A12306B0023948F /* AppDelegate.swift in Sources */,
 				7E8DF5AC2A1238D40023948F /* Font.swift in Sources */,
 				7E8DF5712A12306B0023948F /* SceneDelegate.swift in Sources */,
 				7E8DF5982A12385E0023948F /* Protocol.swift in Sources */,
+				7E6608622A1FF08F007F2F8B /* TabBarViewController.swift in Sources */,
 				7E66085B2A1DD2B3007F2F8B /* PostCollectionViewCell.swift in Sources */,
 				7E8DF59A2A12386D0023948F /* API.swift in Sources */,
 				3E9683EC2A1654CF00D6DD30 /* UIViewController+.swift in Sources */,
+				7E6608602A1FBDAD007F2F8B /* RecommendCollectionViewCell.swift in Sources */,
 				3EEE76612A1757D400D0B80E /* NewPostViewController.swift in Sources */,
 				3EEE766A2A17A2B900D0B80E /* BackButton.swift in Sources */,
 				7E8DF5B02A1239010023948F /* Story.swift in Sources */,

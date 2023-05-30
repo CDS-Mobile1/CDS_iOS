@@ -17,9 +17,10 @@ class MainFeedViewController: BaseViewController {
         ImageLiteral.Common.defaultImage,
         ImageLiteral.Common.defaultImage,
         ImageLiteral.Common.defaultImage,
-        ImageLiteral.Common.defaultImage,
+        ImageLiteral.Common.defaultImage
         
     ]
+    
 
     // MARK: - UI Property
     
@@ -32,6 +33,7 @@ class MainFeedViewController: BaseViewController {
         
         if #available(iOS 15.0, *) {
             tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
+//            tableView.register(RecommendTableViewCell.self, forCellReuseIdentifier: RecommendTableViewCell.identifier)
         } else {
             // Fallback on earlier versions
         }
@@ -40,9 +42,10 @@ class MainFeedViewController: BaseViewController {
     
     private let instagramLogoImageView = UIImageView(image: ImageLiteral.NavBar.MainFeed.instagramLogo)
     
-    private let dmButton: UIButton = {
+    private lazy var dmButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageLiteral.NavBar.MainFeed.dmBlack, for: .normal)
+        button.addTarget(self, action: #selector(dmButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -91,16 +94,31 @@ class MainFeedViewController: BaseViewController {
         view.backgroundColor = . black
         view.addSubview(mainCollectionTableView)
         mainCollectionTableView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            $0.horizontalEdges.bottom.equalToSuperview()
+//            $0.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+//            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
+
+    // MARK: - Custom Method
+    
+    @objc private func dmButtonTapped() {
+        let dmList = DMListViewController()
+        navigationController?.pushViewController(dmList, animated: true)
+    }
+
+
 }
 
 
 // MARK: - UITableView Delegate
 
-extension MainFeedViewController: UITableViewDelegate {}
+extension MainFeedViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 591
+    }
+}
 
 
 // MARK: - UITableView DataSource
@@ -108,14 +126,11 @@ extension MainFeedViewController: UITableViewDelegate {}
 extension MainFeedViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dummyData.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0: return 1
-        default: return 0
-        }
+        return dummyData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -131,9 +146,8 @@ extension MainFeedViewController: UITableViewDataSource {
         } else {
             // Fallback on earlier versions
         }
-        
         return UITableViewCell()
     }
+    
+    
 }
-
-
