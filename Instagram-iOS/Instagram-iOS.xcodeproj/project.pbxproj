@@ -11,6 +11,12 @@
 		3E6CF47A2A14F43500DC3B2B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CF4792A14F43500DC3B2B /* BaseViewController.swift */; };
 		3E6CF47C2A14F63700DC3B2B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CF47B2A14F63700DC3B2B /* BaseTableViewCell.swift */; };
 		3E6CF47E2A14F84500DC3B2B /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CF47D2A14F84500DC3B2B /* BaseCollectionViewCell.swift */; };
+		3E6FFF5D2A1BBC1100166DCE /* StoryContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF5C2A1BBC1100166DCE /* StoryContentViewController.swift */; };
+		3E6FFF5F2A1BC43700166DCE /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF5E2A1BC43700166DCE /* CommonButton.swift */; };
+		3E6FFF612A1BC8A600166DCE /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF602A1BC8A600166DCE /* UITextField+.swift */; };
+		3E6FFF632A1C5FA700166DCE /* StoryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF622A1C5FA700166DCE /* StoryPageViewController.swift */; };
+		3E6FFF672A1D93F400166DCE /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF662A1D93F400166DCE /* Story.swift */; };
+		3E6FFF692A1D94A200166DCE /* UserWithStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF682A1D94A200166DCE /* UserWithStory.swift */; };
 		3E6FFF6F2A204B7800166DCE /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF6E2A204B7800166DCE /* NetworkResult.swift */; };
 		3E6FFF772A2076E800166DCE /* BaseAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6FFF762A2076E800166DCE /* BaseAPIService.swift */; };
 		3E9683D02A1617A800D6DD30 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3E9683CF2A1617A800D6DD30 /* Alamofire */; };
@@ -48,17 +54,21 @@
 		7E8DF5A02A1238840023948F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF59F2A1238840023948F /* Models.swift */; };
 		7E8DF5AA2A1238C50023948F /* UIComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF5A92A1238C50023948F /* UIComponent.swift */; };
 		7E8DF5AC2A1238D40023948F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF5AB2A1238D40023948F /* Font.swift */; };
-		7E8DF5B02A1239010023948F /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF5AF2A1239010023948F /* Story.swift */; };
 		7E8DF5B42A1239100023948F /* DMList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8DF5B32A1239100023948F /* DMList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		37C4BF052A1D3E86006FBFF6 /* SF-Pro-Text-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.ttf"; sourceTree = "<group>"; };
 		37D49A6D2A17CE5C00FBCA0F /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
-		37D49A6F2A18891600FBCA0F /* UITextfield+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+.swift"; sourceTree = "<group>"; };
 		3E6CF4792A14F43500DC3B2B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		3E6CF47B2A14F63700DC3B2B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		3E6CF47D2A14F84500DC3B2B /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		3E6FFF5C2A1BBC1100166DCE /* StoryContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryContentViewController.swift; sourceTree = "<group>"; };
+		3E6FFF5E2A1BC43700166DCE /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
+		3E6FFF602A1BC8A600166DCE /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		3E6FFF622A1C5FA700166DCE /* StoryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPageViewController.swift; sourceTree = "<group>"; };
+		3E6FFF662A1D93F400166DCE /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		3E6FFF682A1D94A200166DCE /* UserWithStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWithStory.swift; sourceTree = "<group>"; };
 		3E6FFF6E2A204B7800166DCE /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		3E6FFF762A2076E800166DCE /* BaseAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPIService.swift; sourceTree = "<group>"; };
 		3E9683D72A162F5200D6DD30 /* AppleSDGothicNeoB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoB.ttf; sourceTree = "<group>"; };
@@ -95,7 +105,6 @@
 		7E8DF59F2A1238840023948F /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		7E8DF5A92A1238C50023948F /* UIComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponent.swift; sourceTree = "<group>"; };
 		7E8DF5AB2A1238D40023948F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
-		7E8DF5AF2A1239010023948F /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		7E8DF5B32A1239100023948F /* DMList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,6 +217,8 @@
 			isa = PBXGroup;
 			children = (
 				7E8DF59F2A1238840023948F /* Models.swift */,
+				3E6FFF662A1D93F400166DCE /* Story.swift */,
+				3E6FFF682A1D94A200166DCE /* UserWithStory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -259,8 +270,8 @@
 			children = (
 				3E9683E32A16319A00D6DD30 /* UIColor+.swift */,
 				3E9683E72A16456500D6DD30 /* UIFont+.swift */,
+				3E6FFF602A1BC8A600166DCE /* UITextField+.swift */,
 				37D49A6D2A17CE5C00FBCA0F /* UIStackView+.swift */,
-				37D49A6F2A18891600FBCA0F /* UITextfield+.swift */,
 				3E9683EB2A1654CF00D6DD30 /* UIViewController+.swift */,
 				3E9683ED2A16562700D6DD30 /* UIView+.swift */,
 			);
@@ -272,6 +283,7 @@
 			children = (
 				3EEE765E2A1678E800D0B80E /* UserProfileView.swift */,
 				7E8DF5A92A1238C50023948F /* UIComponent.swift */,
+				3E6FFF5E2A1BC43700166DCE /* CommonButton.swift */,
 				3EEE76692A17A2B900D0B80E /* BackButton.swift */,
 			);
 			path = UIComponent;
@@ -310,7 +322,8 @@
 		7E8DF5922A1236FC0023948F /* Story */ = {
 			isa = PBXGroup;
 			children = (
-				7E8DF5AF2A1239010023948F /* Story.swift */,
+				3E6FFF5C2A1BBC1100166DCE /* StoryContentViewController.swift */,
+				3E6FFF622A1C5FA700166DCE /* StoryPageViewController.swift */,
 			);
 			path = Story;
 			sourceTree = "<group>";
@@ -438,10 +451,13 @@
 				3EEE766F2A17B5D800D0B80E /* CollectionViewAddCellButton.swift in Sources */,
 				7E8DF59C2A1238770023948F /* EndPoint.swift in Sources */,
 				7E8DF59E2A12387E0023948F /* Service.swift in Sources */,
+				3E6FFF672A1D93F400166DCE /* Story.swift in Sources */,
 				3E6CF47C2A14F63700DC3B2B /* BaseTableViewCell.swift in Sources */,
 				3E9683F02A1656A800D6DD30 /* SizeLiteral.swift in Sources */,
+				3E6FFF5D2A1BBC1100166DCE /* StoryContentViewController.swift in Sources */,
 				3E9683EE2A16562700D6DD30 /* UIView+.swift in Sources */,
 				7E8DF5AE2A1238F80023948F /* MainFeed.swift in Sources */,
+				3E6FFF632A1C5FA700166DCE /* StoryPageViewController.swift in Sources */,
 				7E0148BB2A1890530036147D /* MainFeedViewController.swift in Sources */,
 				3EEE765F2A1678E800D0B80E /* UserProfileView.swift in Sources */,
 				3E6CF47A2A14F43500DC3B2B /* BaseViewController.swift in Sources */,
@@ -463,9 +479,11 @@
 				7E8DF5982A12385E0023948F /* Protocol.swift in Sources */,
 				7E8DF59A2A12386D0023948F /* Config.swift in Sources */,
 				3E9683EC2A1654CF00D6DD30 /* UIViewController+.swift in Sources */,
+				3E6FFF612A1BC8A600166DCE /* UITextField+.swift in Sources */,
+				3E6FFF5F2A1BC43700166DCE /* CommonButton.swift in Sources */,
 				3EEE76612A1757D400D0B80E /* NewPostViewController.swift in Sources */,
+				3E6FFF692A1D94A200166DCE /* UserWithStory.swift in Sources */,
 				3EEE766A2A17A2B900D0B80E /* BackButton.swift in Sources */,
-				7E8DF5B02A1239010023948F /* Story.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,11 +623,12 @@
 				BASE_URL = "http://3.39.128.126:8080";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 77GRA593GT;
+				DEVELOPMENT_TEAM = S9G6YGQ76H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Instagram-iOS/Global/Supports/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -618,7 +637,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "sarangkim.Instagram-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Instagram-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -634,11 +653,12 @@
 				BASE_URL = "http://3.39.128.126:8080";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 77GRA593GT;
+				DEVELOPMENT_TEAM = S9G6YGQ76H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Instagram-iOS/Global/Supports/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -647,7 +667,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "sarangkim.Instagram-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Instagram-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

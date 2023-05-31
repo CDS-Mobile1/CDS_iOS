@@ -83,6 +83,11 @@ final class NewPostViewController: BaseViewController {
         hideKeyboardWhenTappedAround()
         setGesture()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
     // MARK: - Setting
     
@@ -153,6 +158,7 @@ final class NewPostViewController: BaseViewController {
     
     private func shareButtonTapped() {
         // TODO: API 연결 후 POST 하는 과정 추가
+        navigationController?.pushViewController(StoryPageViewController(), animated: false)
     }
     
 }
