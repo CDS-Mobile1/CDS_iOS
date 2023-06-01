@@ -15,6 +15,25 @@ final class DMListViewController: BaseViewController {
     
     // MARK: - UI Property
     
+    let header = UIView()
+    
+    private let headerTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .bodyKorBold
+        label.textColor = .black1
+        label.text = "즐겨찾기"
+        return label
+    }()
+    
+    private let searchTextField: UITextField = {
+        let textField = UITextField()
+        textField.backgroundColor = .gray5
+        textField.font = .body
+        //TODO: - 추후 placeholder 세팅 시 추가하겠습니다
+        //        textField.placeholder = "검색"
+        return textField
+    }()
+    
     let userNameLabel: UILabel = {
         let label = UILabel()
         label.font = .title1
@@ -48,9 +67,11 @@ final class DMListViewController: BaseViewController {
     
     private let DMListTableView: UITableView = {
         let tableView = UITableView()
+        tableView.register(DMTableViewCellHeader.self, forHeaderFooterViewReuseIdentifier: DMTableViewCellHeader.identifier)
         tableView.register(DMTableviewCell.self, forCellReuseIdentifier: DMTableviewCell.identifier)
         return tableView
     }()
+    
     
     // MARK: - Life Cycle
     
@@ -59,7 +80,8 @@ final class DMListViewController: BaseViewController {
         
 //        setSearchTextFieldUI()
         configDelegate()
-        }
+        setSearchTextFieldUI()
+    }
     
 // MARK: - Setting
     
@@ -85,10 +107,26 @@ final class DMListViewController: BaseViewController {
         videoCallButton.setImage(ImageLiteral.NavBar.DMList.camera, for: .normal)
         newMessageButton.setImage(ImageLiteral.NavBar.DMList.newDM, for: .normal)
         navigationItem.leftBarButtonItems = [backButtonItem, userNameLabelItem, arrowDownButtonItem]
-        navigationItem.rightBarButtonItems = [videoCallButtonItem, newMessageButtonItem]
+        navigationItem.rightBarButtonItems = [newMessageButtonItem, videoCallButtonItem]
     }
     
     override func setLayout() {
+        
+        DMListTableView.tableHeaderView = header
+        
+        view.addSubview(header)
+        header.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(155)
+        }
+        
+        header.addSubview(searchTextField)
+        searchTextField.snp.makeConstraints {
+            $0.top.centerX.equalToSuperview()
+            $0.leading.equalToSuperview().offset(16)
+            $0.height.equalTo(35)
+        }
         
         view.addSubview(customNaviView)
         customNaviView.snp.makeConstraints {
@@ -109,28 +147,45 @@ final class DMListViewController: BaseViewController {
             $0.edges.equalToSuperview()
         }
     }
+    
+    private func setSearchTextFieldUI() {
         
-// MARK: - Action Helper
+        searchTextField.layer.cornerRadius = 10
+        searchTextField.backgroundColor = .gray5
+        searchTextField.font = .body
+        //        searchTextField.attributedPlaceholder = NSAttributedString(string: "검색", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
-// MARK: - Custom Method
-        
-//    private func setSearchTextFieldUI() {
-//
-//        searchTextField.layer.cornerRadius = 10
-//        searchTextField.backgroundColor = .gray5
-//        searchTextField.font = .body
-////        searchTextField.attributedPlaceholder = NSAttributedString(string: "검색", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-//
-//    }
+    }
 }
 
 //MARK: - UITableViewDelegate
-extension DMListViewController: UITableViewDelegate {
-    
-}
+
+extension DMListViewController: UITableViewDelegate {}
 
 //MARK: - UITableViewDataSource
+
 extension DMListViewController: UITableViewDataSource {
+    
+    //MARK: - Header
+    
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1 // set your desired number of sections
+//    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DMTableViewCellHeader.identifier) as? DMTableViewCellHeader else {
+            fatalError("header fail")
+        }
+        
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 47
+    }
+    
+    //MARK: - Cells
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
