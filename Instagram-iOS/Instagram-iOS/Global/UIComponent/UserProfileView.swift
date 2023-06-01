@@ -173,4 +173,8 @@ final class UserProfileView: UIView {
         return colors
     }
     
+    func addProfileButtonAction(_ action: UIAction) {
+        profileImageButtonView.addAction(action, for: .touchUpInside)
+    }
+    
 }
