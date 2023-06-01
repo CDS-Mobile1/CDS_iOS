@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import SnapKit
 
-@available(iOS 15.0, *)
-class PostTableViewCell: BaseTableViewCell { 
+class PostTableViewCell: BaseTableViewCell {
+    
     // MARK: - Property
     
     private var postDummyData: [UIImage] = []
@@ -52,6 +53,7 @@ class PostTableViewCell: BaseTableViewCell {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: PostCollectionViewCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.isPagingEnabled = true
         return collectionView
     }()
     
@@ -122,8 +124,6 @@ class PostTableViewCell: BaseTableViewCell {
         return label
     }()
     
-    
-    
     // MARK: - Life Cycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -137,11 +137,11 @@ class PostTableViewCell: BaseTableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     // MARK: - Setting
     
     func setDelegate() {
         self.postCollectionView.dataSource = self
+        self.postCollectionView.delegate = self
     }
     
     override func setLayout() {
@@ -177,28 +177,32 @@ class PostTableViewCell: BaseTableViewCell {
         
         postCollectionView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(54)
-            $0.height.equalTo(375)
-            $0.width.equalTo(375)
+            $0.height.equalTo(SizeLiteral.Screen.width)
+            $0.width.equalTo(SizeLiteral.Screen.width)
         }
         
         likeButton.snp.makeConstraints {
             $0.height.width.equalTo(24)
-            $0.top.equalToSuperview().inset(441)
+//            $0.top.equalToSuperview().inset(441)
+            $0.top.equalTo(postCollectionView.snp.bottom).offset(12)
             $0.leading.equalToSuperview().inset(14)
         }
         
         commentButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(441)
+//            $0.top.equalToSuperview().inset(441)
+            $0.top.equalTo(postCollectionView.snp.bottom).offset(12)
             $0.leading.equalToSuperview().inset(54)
         }
         
         dmButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(441)
+//            $0.top.equalToSuperview().inset(441)
+            $0.top.equalTo(postCollectionView.snp.bottom).offset(12)
             $0.leading.equalToSuperview().inset(94)
         }
         
         saveButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(441)
+//            $0.top.equalToSuperview().inset(441)
+            $0.top.equalTo(postCollectionView.snp.bottom).offset(12)
             $0.trailing.equalToSuperview().inset(14)
         }
         
@@ -233,8 +237,6 @@ class PostTableViewCell: BaseTableViewCell {
         }
     }
     
-    // MARK: - Action Helper
-    
     // MARK: - Custom Method
     
     func prepareCells(with data: [UIImage]) {
@@ -250,18 +252,15 @@ class PostTableViewCell: BaseTableViewCell {
             button.setImage(ImageLiteral.Post.likeBlackFilled, for: .normal)
         }
     }
-}
-
-
-// MARK: - UICollectionView Delegate
-@available(iOS 15.0, *)
-extension PostTableViewCell: UICollectionViewDelegate {
     
 }
 
 
+// MARK: - UICollectionView Delegate
+extension PostTableViewCell: UICollectionViewDelegate {}
+
+
 // MARK: - UICollectionView Datasource
-@available(iOS 15.0, *)
 extension PostTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return postDummyData.count

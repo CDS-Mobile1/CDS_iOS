@@ -8,38 +8,48 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
-
-    // MARK: - Property
     
     // MARK: - UI Property
+    
+    let mainfeedVC = MainFeedViewController()
+    let searchVC: UIImageView = {
+        let vc = UIImageView()
+        vc.image = ImageLiteral.TabBar.search
+        return vc
+    }()
+    let newpostVC = NewPostViewController()
+    let reelsVC: UIImageView = {
+        let vc = UIImageView()
+        vc.image = ImageLiteral.TabBar.reels
+        return vc
+    }()
+    let profileVC: UIImageView = {
+        let vc = UIImageView()
+        vc.image = ImageLiteral.TabBar.profile
+        return vc
+    }()
     
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mainfeedVC = MainFeedViewController()
-        let searchVC: UIImageView = {
-            let vc = UIImageView()
-            vc.image = ImageLiteral.TabBar.search
-            return vc
-        }()
-        let newpostVC = NewPostViewController()
-        let reelsVC: UIImageView = {
-            let vc = UIImageView()
-            vc.image = ImageLiteral.TabBar.reels
-            return vc
-        }()
-        let profileVC: UIImageView = {
-            let vc = UIImageView()
-            vc.image = ImageLiteral.TabBar.profile
-            return vc
-        }()
-        
+        setItemStyle()
+        setTabBarStyle()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    // MARK: - Setting
+    
+    func setItemStyle() {
         let searchTabBarItem = UITabBarItem(title: nil, image: searchVC.image, selectedImage: ImageLiteral.TabBar.searchFilled)
         let reelsTabBarItem = UITabBarItem(title: nil, image: reelsVC.image, selectedImage: nil)
         let profileTabBarItem = UITabBarItem(title: nil, image: profileVC.image, selectedImage: nil)
-
+        
         mainfeedVC.tabBarItem.image = ImageLiteral.TabBar.home
         mainfeedVC.tabBarItem.selectedImage = ImageLiteral.TabBar.homeFilled
         newpostVC.tabBarItem.image = ImageLiteral.TabBar.newPost
@@ -56,31 +66,12 @@ class TabBarViewController: UITabBarController {
         navProfile.tabBarItem = profileTabBarItem
         
         setViewControllers([navMainFeed, navSearch, navNewPost, navReels, navProfile], animated: false)
-        
+    }
+    
+    func setTabBarStyle() {
         tabBar.barTintColor = .white
         tabBar.isTranslucent = false
         tabBar.tintColor = .black
-    
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
-    }
-    
-    // MARK: - Setting
-    
-//    func setTabBarStyle() {
-//        tabBar.barTintColor = .white
-//        tabBar.isTranslucent = false
-//        tabBar.tintColor = .black
-//    }
-    
-    
-    // MARK: - Action Helper
-    
-    // MARK: - Custom Method
-    
-    
-
 }

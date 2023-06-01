@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class PostCollectionViewCell: BaseCollectionViewCell {
     // MARK: - UI Property
@@ -16,6 +17,7 @@ class PostCollectionViewCell: BaseCollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
     
     // MARK: - Life Cycle
     
