@@ -9,9 +9,17 @@ import UIKit
 
 import SnapKit
 
-final class DMTableViewHeader: UITableViewHeaderFooterView {
+final class DMTableViewHeader: UIView {
     
-    static let identifier = "DMTableViewHeader"
+    private lazy var storyCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.showsVerticalScrollIndicator = false
+        return collectionView
+    }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -30,9 +38,11 @@ final class DMTableViewHeader: UITableViewHeaderFooterView {
         return textField
     }()
     
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: DMTableViewHeader.identifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
+        register()
+        configDelegate()
         setLayout()
         setSearchTextFieldUI()
     }
@@ -41,19 +51,41 @@ final class DMTableViewHeader: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Setting
+    
+    private func register() {
+        storyCollectionView.register(DMCollectionViewCell.self, forCellWithReuseIdentifier: DMCollectionViewCell.identifier)
+    }
+    
+    private func configDelegate() {
+        storyCollectionView.delegate = self
+        storyCollectionView.dataSource = self
+    }
+    
     private func setLayout() {
         
-        contentView.addSubview(searchTextField)
+        backgroundColor = .white1
+        
+        addSubview(searchTextField)
         searchTextField.snp.makeConstraints {
-            $0.top.centerX.equalToSuperview()
+            $0.top.centerX.equalToSuperview().offset(8)
+            $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(16)
             $0.height.equalTo(35)
         }
         
-        contentView.addSubview(titleLabel)
+        addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(searchTextField.snp.bottom).offset(18)
             $0.leading.equalToSuperview().offset(20)
+        }
+        
+        addSubview(storyCollectionView)
+        storyCollectionView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(4)
+            $0.centerX.equalToSuperview()
+            $0.leading.equalToSuperview().offset(14)
+            $0.height.equalTo(90)
         }
     }
     
@@ -67,3 +99,38 @@ final class DMTableViewHeader: UITableViewHeaderFooterView {
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
+
+extension DMTableViewHeader: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 72, height: 90)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//    }
+}
+
+//MARK: - UICollectionViewDataSource
+
+extension DMTableViewHeader: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 9
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DMCollectionViewCell.identifier, for: indexPath) as? DMCollectionViewCell else { return UICollectionViewCell() }
+        
+        return cell
+    }
+    
+    
+}

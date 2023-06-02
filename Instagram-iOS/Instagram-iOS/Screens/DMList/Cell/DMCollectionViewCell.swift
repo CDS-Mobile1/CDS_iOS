@@ -37,6 +37,7 @@ final class DMCollectionViewCell: BaseCollectionViewCell {
         userProfileView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
             $0.leading.equalToSuperview().offset(7)
+            $0.width.height.equalTo(58)
             $0.centerX.equalToSuperview()
         }
         
