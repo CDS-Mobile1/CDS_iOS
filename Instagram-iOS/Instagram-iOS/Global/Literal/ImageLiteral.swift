@@ -25,7 +25,7 @@ enum ImageLiteral {
             static let search = UIImage.load(name: "searchDm")
         }
         
-        static let back = UIImage.load(name: "back")
+        static let back = UIImage.load(name: "Back")
     }
     
     enum TabBar {
@@ -47,6 +47,8 @@ enum ImageLiteral {
     enum Story {
         enum Top {
             static let tagged = UIImage.load(name: "tagged")
+            static let setting = UIImage.load(name: "setting")
+            static let sampleProfileImage = UIImage.load(name: "sampleProfileImage")
         }
         
         enum Bottom {
@@ -68,6 +70,22 @@ enum ImageLiteral {
     enum Common {
         static let defaultImage = UIImage.load(name: "defaultImage")
         static let rightChevron = UIImage.load(name: "rightChevron")
+    }
+    
+    enum Post {
+        static let settingMore = UIImage.load(name: "settingMore")
+        
+        static let likeBlack = UIImage.load(name: "likeBlack")
+        static let likeBlackFilled = UIImage.load(name: "likeBlackFilled")
+        static let comment = UIImage.load(name: "comment")
+        static let dmBlack = UIImage.load(name: "dmBlack")
+        static let save = UIImage.load(name: "save")
+    }
+    
+    enum Recommend {
+        static let castle = UIImage.load(name: "castle")
+        static let sung = UIImage.load(name: "sung")
+        static let kim = UIImage.load(name: "kim")
     }
     
 }

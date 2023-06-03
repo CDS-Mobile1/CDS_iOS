@@ -9,7 +9,20 @@ import UIKit
 import SnapKit
 
 class MainFeedViewController: BaseViewController {
-   
+    
+    // MARK: - Property
+    
+    let dummyData: [UIImage] = [
+        
+        ImageLiteral.Common.defaultImage,
+        ImageLiteral.Common.defaultImage,
+        ImageLiteral.Common.defaultImage,
+        ImageLiteral.Common.defaultImage,
+        ImageLiteral.Common.defaultImage
+        
+    ]
+    
+    
     // MARK: - UI Property
     
     private let mainCollectionTableView: UITableView = {
@@ -18,14 +31,17 @@ class MainFeedViewController: BaseViewController {
         let storyView = StoryCollectionView()
         storyView.frame = .init(x: 0, y: 0, width: SizeLiteral.Screen.width, height: 115)
         tableView.tableHeaderView = storyView
+        
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
         return tableView
     }()
     
     private let instagramLogoImageView = UIImageView(image: ImageLiteral.NavBar.MainFeed.instagramLogo)
     
-    private let dmButton: UIButton = {
+    private lazy var dmButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageLiteral.NavBar.MainFeed.dmBlack, for: .normal)
+        button.addTarget(self, action: #selector(dmButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -48,7 +64,7 @@ class MainFeedViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
     }
     
     // MARK: - Setting
@@ -74,26 +90,52 @@ class MainFeedViewController: BaseViewController {
         view.backgroundColor = . black
         view.addSubview(mainCollectionTableView)
         mainCollectionTableView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
+    
+    // MARK: - Custom Method
+    
+    @objc private func dmButtonTapped() {
+        let dmList = DMListViewController()
+        navigationController?.pushViewController(dmList, animated: true)
+    }
+    
 }
 
 
 // MARK: - UITableView Delegate
 
-extension MainFeedViewController: UITableViewDelegate {}
+extension MainFeedViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 591
+    }
+    
+}
 
 
 // MARK: - UITableView DataSource
 
 extension MainFeedViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return dummyData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        guard let postTableViewCell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as? PostTableViewCell
+        else { return UITableViewCell() }
+        
+        postTableViewCell.selectionStyle = .none
+        postTableViewCell.prepareCells(with: dummyData)
+        return postTableViewCell
     }
+    
 }
