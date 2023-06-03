@@ -14,12 +14,7 @@ final class DMCollectionViewCell: BaseCollectionViewCell {
     // MARK: - Property
     // MARK: - UI Property
     
-//    let userProfileView = UserProfileView(usedView: .dm, storyStatus: .none)
-    let userProfileView: UIImageView = {
-        let image = UIImageView()
-        image.backgroundColor = .blue
-        return image
-    }()
+    let userProfileView = UserProfileView(usedView: .dm, storyStatus: .none)
     
     let usernameLabel: UILabel = {
         let label = UILabel()

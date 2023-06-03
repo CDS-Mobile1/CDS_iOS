@@ -12,14 +12,10 @@ import SnapKit
 final class DMTableviewCell: BaseTableViewCell {
     
     // MARK: - Property
+    
     // MARK: - UI Property
     
-//    let userProfileView = UserProfileView(usedView: .dm, storyStatus: .none)
-    private let userProfileView: UIImageView = {
-        let image = UIImageView()
-        image.backgroundColor = .blue
-        return image
-    }()
+    let userProfileView = UserProfileView(usedView: .dm, storyStatus: .none)
     
     private let usernameLabel: UILabel = {
         let label = UILabel()
@@ -39,7 +35,8 @@ final class DMTableviewCell: BaseTableViewCell {
     
     private lazy var starButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .yellow
+        button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        button.tintColor = .systemYellow
         return button
     }()
     
@@ -70,6 +67,7 @@ final class DMTableviewCell: BaseTableViewCell {
         starButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-9)
+            $0.width.height.equalTo(29)
         }
     }
     

@@ -77,7 +77,7 @@ final class DMTableViewHeader: UIView {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(searchTextField.snp.bottom).offset(18)
-            $0.leading.equalToSuperview().offset(20)
+            $0.leading.equalToSuperview().offset(16)
         }
         
         addSubview(storyCollectionView)
@@ -109,14 +109,6 @@ extension DMTableViewHeader: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 4
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//    }
 }
 
 //MARK: - UICollectionViewDataSource
