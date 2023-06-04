@@ -38,6 +38,14 @@ final class DMTableViewHeader: UIView {
         return textField
     }()
     
+    private let sectionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .bodyKorBold
+        label.textColor = .black1
+        label.text = "메시지"
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -86,6 +94,12 @@ final class DMTableViewHeader: UIView {
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(14)
             $0.height.equalTo(90)
+        }
+        
+        addSubview(sectionLabel)
+        sectionLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(16)
+            $0.bottom.equalToSuperview().offset(-8)
         }
     }
     
