@@ -99,24 +99,10 @@ final class DMListViewController: BaseViewController {
 
 extension DMListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        switch section {
-//        case 0:
-//            return DMTableViewHeader()
-//        default:
-//            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DMTableViewCellHeader.identifier) as? DMTableViewCellHeader else {fatalError("header fail")}
-//            return header
-//        }
         return DMTableViewHeader()
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        switch section {
-//        case 0:
-//            return 172
-//        default:
-//            return 47
-//        }
-        
         return 172 + 42
     }
 }
