@@ -35,6 +35,7 @@ final class DMTableViewHeader: UIView {
         textField.font = .body
         //TODO: - 추후 placeholder 세팅 시 추가하겠습니다
         //        textField.placeholder = "검색"
+        textField.layer.cornerRadius = 10
         return textField
     }()
     
@@ -52,6 +53,7 @@ final class DMTableViewHeader: UIView {
         register()
         configDelegate()
         setLayout()
+        setStyle()
         setSearchTextFieldUI()
     }
     
@@ -71,8 +73,6 @@ final class DMTableViewHeader: UIView {
     }
     
     private func setLayout() {
-        
-        backgroundColor = .white1
         
         addSubview(searchTextField)
         searchTextField.snp.makeConstraints {
@@ -103,13 +103,8 @@ final class DMTableViewHeader: UIView {
         }
     }
     
-    private func setSearchTextFieldUI() {
-        
-        searchTextField.layer.cornerRadius = 10
-        searchTextField.backgroundColor = .gray5
-        searchTextField.font = .body
-        //        searchTextField.attributedPlaceholder = NSAttributedString(string: "검색", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        
+    private func setStyle() {
+        backgroundColor = .white1
     }
 }
 

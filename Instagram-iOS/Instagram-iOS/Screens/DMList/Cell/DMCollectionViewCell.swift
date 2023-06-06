@@ -11,7 +11,6 @@ import SnapKit
 
 final class DMCollectionViewCell: BaseCollectionViewCell {
     
-    // MARK: - Property
     // MARK: - UI Property
     
     let userProfileView = UserProfileView(usedView: .dm, storyStatus: .none)
@@ -23,7 +22,6 @@ final class DMCollectionViewCell: BaseCollectionViewCell {
         label.textColor = .gray2
         return label
     }()
-    
     
     // MARK: - Layout
     
@@ -43,11 +41,6 @@ final class DMCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    override func setStyle() {
-        
-    }
-    
     // MARK: - Custom Method
-    
-    
+
 }

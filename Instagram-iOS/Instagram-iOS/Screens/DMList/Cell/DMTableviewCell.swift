@@ -11,8 +11,6 @@ import SnapKit
 
 final class DMTableviewCell: BaseTableViewCell {
     
-    // MARK: - Property
-    
     // MARK: - UI Property
     
     let userProfileView = UserProfileView(usedView: .dm, storyStatus: .none)
@@ -39,7 +37,6 @@ final class DMTableviewCell: BaseTableViewCell {
         button.tintColor = .systemYellow
         return button
     }()
-    
     
     // MARK: - Layout
     
@@ -70,12 +67,4 @@ final class DMTableviewCell: BaseTableViewCell {
             $0.width.height.equalTo(29)
         }
     }
-    
-    override func setStyle() {
-        
-    }
-    
-    // MARK: - Custom Method
-    
-    
 }
