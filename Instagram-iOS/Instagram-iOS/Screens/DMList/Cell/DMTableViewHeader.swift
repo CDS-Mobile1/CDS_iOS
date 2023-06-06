@@ -17,7 +17,7 @@ final class DMTableViewHeader: UIView {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
     
@@ -54,7 +54,6 @@ final class DMTableViewHeader: UIView {
         configDelegate()
         setLayout()
         setStyle()
-        setSearchTextFieldUI()
     }
     
     required init?(coder: NSCoder) {
