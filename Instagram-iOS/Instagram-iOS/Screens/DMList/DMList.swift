@@ -2,108 +2,124 @@
 //  DMList.swift
 //  Instagram-iOS
 //
-//  Created by 김사랑 on 2023/05/15.
+//  Created by 백준 on 2023/05/15.
 //
 
 import UIKit
-
 import SnapKit
 
 final class DMListViewController: BaseViewController {
     
-    // MARK: - Property
-    
     // MARK: - UI Property
+    
+    private let headerView = DMTableViewHeader()
+    
+    let userNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = .title1
+        label.textColor = .black1
+        label.text = "gosopt_cds_app1"
+        return label
+    }()
+    
+    let arrowDownButton = UIButton()
+    
+    let videoCallButton = UIButton()
+    
+    let newMessageButton = UIButton()
+    
+    let backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(ImageLiteral.NavBar.DMList.arrowBack, for: .normal)
+        return button
+    }()
     
     let customNaviView = UIView()
     
-    private let searchTextField: UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = .gray5
-        textField.font = .body
-        textField.placeholder = "검색"
-        return textField
+    private let DMListTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.separatorColor = .clear
+        tableView.register(DMTableViewCellHeader.self, forHeaderFooterViewReuseIdentifier: DMTableViewCellHeader.identifier)
+        tableView.register(DMTableviewCell.self, forCellReuseIdentifier: DMTableviewCell.identifier)
+        return tableView
     }()
+    
     
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setSearchTextFieldUI()
+        configTableView()
     }
     
-    // MARK: - Setting
+    private func configTableView() {
+        DMListTableView.delegate = self
+        DMListTableView.dataSource = self
+    }
     
     override func setNavigationBar() {
         super.setNavigationBar()
         
-        let backButton = UIButton()
-            backButton.setImage(ImageLiteral.NavBar.DMList.arrowBack, for: .normal)
-        
         let backButtonItem = UIBarButtonItem(customView: backButton)
-        
-        let userNameLabel: UILabel = {
-            let label = UILabel()
-            label.font = .title1
-            label.textColor = .black1
-            label.text = "gosopt_cds_app1"
-            return label
-        }()
         
         let userNameLabelItem = UIBarButtonItem(customView: userNameLabel)
         
-        let arrowButton = UIButton()
-        arrowButton.setImage(ImageLiteral.NavBar.DMList.arrowBottom, for: .normal)
-        
-        let arrowButtonItem = UIBarButtonItem(customView: arrowButton)
-        
-        let videoCallButton = UIButton()
-        videoCallButton.setImage(ImageLiteral.NavBar.DMList.camera, for: .normal)
+        let arrowDownButtonItem = UIBarButtonItem(customView: arrowDownButton)
         
         let videoCallButtonItem = UIBarButtonItem(customView: videoCallButton)
         
-        let newMessageButton = UIButton()
-        newMessageButton.setImage(ImageLiteral.NavBar.DMList.newDM, for: .normal)
-        
         let newMessageButtonItem = UIBarButtonItem(customView: newMessageButton)
         
-        navigationItem.leftBarButtonItems = [backButtonItem, userNameLabelItem, arrowButtonItem]
-        navigationItem.rightBarButtonItems = [videoCallButtonItem, newMessageButtonItem]
+        arrowDownButton.setImage(ImageLiteral.NavBar.DMList.arrowBottom, for: .normal)
+        videoCallButton.setImage(ImageLiteral.NavBar.DMList.camera, for: .normal)
+        newMessageButton.setImage(ImageLiteral.NavBar.DMList.newDM, for: .normal)
+        navigationItem.leftBarButtonItems = [backButtonItem, userNameLabelItem, arrowDownButtonItem]
+        navigationItem.rightBarButtonItems = [newMessageButtonItem, videoCallButtonItem]
     }
     
     override func setLayout() {
-        
         view.addSubview(customNaviView)
         customNaviView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.leading.trailing.equalToSuperview()
         }
+
+        DMListTableView.tableHeaderView = headerView
         
-        view.addSubview(searchTextField)
-        searchTextField.snp.makeConstraints {
-            $0.top.equalTo(customNaviView.snp.bottom).offset(8)
-            $0.centerX.equalToSuperview()
-            $0.leading.equalToSuperview().offset(16)
-            $0.height.equalTo(35)
+        view.addSubview(DMListTableView)
+        DMListTableView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.bottom.trailing.equalToSuperview()
         }
     }
-        
-        // MARK: - Action Helper
-        
-        // MARK: - Custom Method
-        
-    private func setSearchTextFieldUI() {
-//        let searchImageView = UIImageView(image: ImageLiteral.NavBar.DMList.search)
-//        searchImageView.frame = CGRect(x: 0, y: 0, width: 10, height: searchTextField.frame.height)
+}
 
-//        searchTextField.leftView = searchImageView
-//        searchTextField.leftViewMode = .always
-        
-        searchTextField.layer.cornerRadius = 10
-        searchTextField.backgroundColor = .gray5
-        searchTextField.font = .body
-        searchTextField.attributedPlaceholder = NSAttributedString(string: "검색", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        
+//MARK: - UITableViewDelegate
+
+extension DMListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return DMTableViewHeader()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 172 + 42
+    }
+}
+
+//MARK: - UITableViewDataSource
+
+extension DMListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: DMTableviewCell.identifier, for: indexPath) as! DMTableviewCell
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 74
     }
 }

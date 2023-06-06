@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		372AAF732A20E7FC009212A8 /* DMTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372AAF722A20E7FC009212A8 /* DMTableviewCell.swift */; };
+		372AAF752A20E808009212A8 /* DMCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372AAF742A20E808009212A8 /* DMCollectionViewCell.swift */; };
+		372AAF772A20F90F009212A8 /* DMTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372AAF762A20F90F009212A8 /* DMTableViewHeader.swift */; };
+		372AAF952A24E3C4009212A8 /* DMTableViewCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372AAF942A24E3C4009212A8 /* DMTableViewCellHeader.swift */; };
 		37C4BF062A1D3E86006FBFF6 /* SF-Pro-Text-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37C4BF052A1D3E86006FBFF6 /* SF-Pro-Text-Bold.ttf */; };
 		3E6CF47A2A14F43500DC3B2B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CF4792A14F43500DC3B2B /* BaseViewController.swift */; };
 		3E6CF47C2A14F63700DC3B2B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CF47B2A14F63700DC3B2B /* BaseTableViewCell.swift */; };
@@ -63,6 +67,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		372AAF722A20E7FC009212A8 /* DMTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTableviewCell.swift; sourceTree = "<group>"; };
+		372AAF742A20E808009212A8 /* DMCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCollectionViewCell.swift; sourceTree = "<group>"; };
+		372AAF762A20F90F009212A8 /* DMTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTableViewHeader.swift; sourceTree = "<group>"; };
+		372AAF942A24E3C4009212A8 /* DMTableViewCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTableViewCellHeader.swift; sourceTree = "<group>"; };
 		37C4BF052A1D3E86006FBFF6 /* SF-Pro-Text-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.ttf"; sourceTree = "<group>"; };
 		37D49A6D2A17CE5C00FBCA0F /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		3E6CF4792A14F43500DC3B2B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +140,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		372AAF702A20E7C8009212A8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				372AAF722A20E7FC009212A8 /* DMTableviewCell.swift */,
+				372AAF742A20E808009212A8 /* DMCollectionViewCell.swift */,
+				372AAF762A20F90F009212A8 /* DMTableViewHeader.swift */,
+				372AAF942A24E3C4009212A8 /* DMTableViewCellHeader.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		3EEE766B2A17AEC000D0B80E /* NewPostImageCollection */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +390,7 @@
 		7E8DF5942A1237120023948F /* DMList */ = {
 			isa = PBXGroup;
 			children = (
+				372AAF702A20E7C8009212A8 /* Cell */,
 				7E8DF5B32A1239100023948F /* DMList.swift */,
 			);
 			path = DMList;
@@ -483,6 +503,7 @@
 				7E8DF59C2A1238770023948F /* EndPoint.swift in Sources */,
 				7E8DF59E2A12387E0023948F /* Service.swift in Sources */,
 				3E6FFF672A1D93F400166DCE /* Story.swift in Sources */,
+				372AAF732A20E7FC009212A8 /* DMTableviewCell.swift in Sources */,
 				3E6CF47C2A14F63700DC3B2B /* BaseTableViewCell.swift in Sources */,
 				3E9683F02A1656A800D6DD30 /* SizeLiteral.swift in Sources */,
 				3E6FFF5D2A1BBC1100166DCE /* StoryContentViewController.swift in Sources */,
@@ -496,6 +517,8 @@
 				7E0148C02A1BEA9A0036147D /* StoryCollectionViewCell.swift in Sources */,
 				3E9683E62A16392900D6DD30 /* ImageLiteral.swift in Sources */,
 				3EEE76682A176C9100D0B80E /* NewPostImageCollectionViewCell.swift in Sources */,
+				372AAF952A24E3C4009212A8 /* DMTableViewCellHeader.swift in Sources */,
+				372AAF772A20F90F009212A8 /* DMTableViewHeader.swift in Sources */,
 				7E8DF5A02A1238840023948F /* Models.swift in Sources */,
 				7E0148BE2A1BE8780036147D /* StoryCollectionView.swift in Sources */,
 				3E6CF47E2A14F84500DC3B2B /* BaseCollectionViewCell.swift in Sources */,
@@ -509,6 +532,7 @@
 				7E8DF5AC2A1238D40023948F /* Font.swift in Sources */,
 				3E6FFF6F2A204B7800166DCE /* NetworkResult.swift in Sources */,
 				7E8DF5712A12306B0023948F /* SceneDelegate.swift in Sources */,
+				372AAF752A20E808009212A8 /* DMCollectionViewCell.swift in Sources */,
 				7E8DF5982A12385E0023948F /* Protocol.swift in Sources */,
 				7E6608622A1FF08F007F2F8B /* TabBarViewController.swift in Sources */,
 				7E66085B2A1DD2B3007F2F8B /* PostCollectionViewCell.swift in Sources */,
